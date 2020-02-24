@@ -52,7 +52,7 @@ Response Field
 URL: /administrator/getProfile  
 Method：GET  
 
-RequestHeader: 
+RequestHeader:  
 jcartToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 ResponseBody:  
@@ -91,7 +91,7 @@ Response Field
 URL: /administrator/updateProfile  
 Method：POST  
 
-RequestHeader: 
+RequestHeader:  
 jcartToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 RequestBody:  
