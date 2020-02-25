@@ -8,6 +8,8 @@ import io.cjf.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductShowOutDTO;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -30,6 +32,16 @@ public class ProductController {
 
     @PostMapping("/update")
     public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
+
+    }
+
+    @PostMapping("/delete")
+    public void delete(@RequestBody Integer productId){
+
+    }
+
+    @PostMapping("/batchDelete")
+    public void batchDelete(@RequestBody List<Integer> productIds){
 
     }
 
