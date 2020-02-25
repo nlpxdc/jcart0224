@@ -27,4 +27,9 @@ public class ReturnController {
         return null;
     }
 
+    @PostMapping("/cancel")
+    public void cancel(@RequestBody Integer returnId){
+
+    }
+
 }
