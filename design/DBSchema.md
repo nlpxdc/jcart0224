@@ -111,7 +111,7 @@
 | mobile  | varchar(20)  | 非空 | 手机  |
 | email  | varchar(100)  | 非空  | 邮箱  |
 | status  | tinyint  | 非空 | 状态（0等待取货、1正在处理、完成）  |
-| return_action | tinyint  |  | 处理方式（0退货、1换货、2修理）  |
+| action | tinyint  |  | 处理方式（0退货、1换货、2修理）  |
 | product_code  | varchar(50)  | 非空 | 商品代码  |
 | product_name  | varchar(100)  | 非空 | 商品名称  |
 | quantity  | int  | 非空 | 商品数量  |
