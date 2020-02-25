@@ -42,7 +42,7 @@ public class CustomerController {
 
     @PostMapping("/resetPwd")
     public void resetPwd(@RequestBody CustomerResetPwdInDTO customerResetPwdInDTO){
-        
+
     }
 
 
