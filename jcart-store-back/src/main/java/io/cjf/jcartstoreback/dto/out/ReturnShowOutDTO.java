@@ -1,5 +1,7 @@
 package io.cjf.jcartstoreback.dto.out;
 
+import java.util.List;
+
 public class ReturnShowOutDTO {
     private Integer returnId;
     private Integer orderId;
@@ -17,6 +19,8 @@ public class ReturnShowOutDTO {
     private String comment;
     private Long createTimestamp;
     private Long updateTimestamp;
+
+    private List<ReturnHistoryListOutDTO> returnHistories;
 
     public Integer getReturnId() {
         return returnId;
@@ -144,5 +148,13 @@ public class ReturnShowOutDTO {
 
     public void setUpdateTimestamp(Long updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
+    }
+
+    public List<ReturnHistoryListOutDTO> getReturnHistories() {
+        return returnHistories;
+    }
+
+    public void setReturnHistories(List<ReturnHistoryListOutDTO> returnHistories) {
+        this.returnHistories = returnHistories;
     }
 }

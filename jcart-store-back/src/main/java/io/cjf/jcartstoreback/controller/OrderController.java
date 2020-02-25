@@ -2,6 +2,7 @@ package io.cjf.jcartstoreback.controller;
 
 import io.cjf.jcartstoreback.dto.in.OrderCheckoutInDTO;
 import io.cjf.jcartstoreback.dto.out.OrderListOutDTO;
+import io.cjf.jcartstoreback.dto.out.OrderShowOutDTO;
 import io.cjf.jcartstoreback.dto.out.PageOutDTO;
 import io.cjf.jcartstoreback.dto.out.ProductShowOutDTO;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class OrderController {
     }
 
     @GetMapping("/getById")
-    public ProductShowOutDTO getById(@RequestParam Long orderId){
+    public OrderShowOutDTO getById(@RequestParam Long orderId){
         return null;
     }
 }

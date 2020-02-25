@@ -17,6 +17,7 @@ public class OrderShowOutDTO {
     private Double invoicePrice;
     private String comment;
     private List<OrderProductOutDTO> orderProducts;
+    private List<OrderHistoryListOutDTO> orderHistories;
 
     public Long getOrderId() {
         return orderId;
@@ -128,5 +129,13 @@ public class OrderShowOutDTO {
 
     public void setOrderProducts(List<OrderProductOutDTO> orderProducts) {
         this.orderProducts = orderProducts;
+    }
+
+    public List<OrderHistoryListOutDTO> getOrderHistories() {
+        return orderHistories;
+    }
+
+    public void setOrderHistories(List<OrderHistoryListOutDTO> orderHistories) {
+        this.orderHistories = orderHistories;
     }
 }
