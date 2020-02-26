@@ -1,5 +1,7 @@
 package io.cjf.jcartstoreback.dao;
 
+import com.github.pagehelper.Page;
+import io.cjf.jcartstoreback.dto.out.ProductListOutDTO;
 import io.cjf.jcartstoreback.po.Product;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +18,9 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+//    custom
+
+    Page<ProductListOutDTO> search();
+
 }

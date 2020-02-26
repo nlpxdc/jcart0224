@@ -14,6 +14,15 @@
     <result column="reword_points" jdbcType="INTEGER" property="rewordPoints" />
     <result column="sort_order" jdbcType="INTEGER" property="sortOrder" />
   </resultMap>
+  <resultMap id="ProductListOutDTO" type="io.cjf.jcartstoreback.dto.out.ProductListOutDTO">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_abstract" jdbcType="VARCHAR" property="productAbstract" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="discount" jdbcType="DOUBLE" property="discount" />
+    <result column="main_pic_url" jdbcType="VARCHAR" property="mainPicUrl" />
+  </resultMap>
   <sql id="Base_Column_List">
     product_id, product_code, product_name, product_abstract, price, discount, stock_quantity, 
     status, main_pic_url, reword_points, sort_order
@@ -161,4 +170,12 @@
       sort_order = #{sortOrder,jdbcType=INTEGER}
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
+
+<!--  custom-->
+  <select id="search" resultMap="ProductListOutDTO">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_product
+    where status = 1
+  </select>
 </mapper>
