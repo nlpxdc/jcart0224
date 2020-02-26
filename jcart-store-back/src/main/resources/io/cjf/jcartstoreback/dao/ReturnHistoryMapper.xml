@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.cjf.jcartstoreback.dao.ReturnHistoryMapper">
+  <resultMap id="BaseResultMap" type="io.cjf.jcartstoreback.po.ReturnHistory">
+    <id column="return_history_id" jdbcType="BIGINT" property="returnHistoryId" />
+    <result column="return_id" jdbcType="INTEGER" property="returnId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="return_status" jdbcType="TINYINT" property="returnStatus" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="customer_notified" jdbcType="BIT" property="customerNotified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    return_history_id, return_id, time, return_status, comment, customer_notified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jcart_return_history
+    where return_history_id = #{returnHistoryId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from jcart_return_history
+    where return_history_id = #{returnHistoryId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="io.cjf.jcartstoreback.po.ReturnHistory">
+    insert into jcart_return_history (return_history_id, return_id, time, 
+      return_status, comment, customer_notified
+      )
+    values (#{returnHistoryId,jdbcType=BIGINT}, #{returnId,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{returnStatus,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR}, #{customerNotified,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.ReturnHistory">
+    insert into jcart_return_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="returnHistoryId != null">
+        return_history_id,
+      </if>
+      <if test="returnId != null">
+        return_id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="returnStatus != null">
+        return_status,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="customerNotified != null">
+        customer_notified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="returnHistoryId != null">
+        #{returnHistoryId,jdbcType=BIGINT},
+      </if>
+      <if test="returnId != null">
+        #{returnId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnStatus != null">
+        #{returnStatus,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNotified != null">
+        #{customerNotified,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartstoreback.po.ReturnHistory">
+    update jcart_return_history
+    <set>
+      <if test="returnId != null">
+        return_id = #{returnId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnStatus != null">
+        return_status = #{returnStatus,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNotified != null">
+        customer_notified = #{customerNotified,jdbcType=BIT},
+      </if>
+    </set>
+    where return_history_id = #{returnHistoryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartstoreback.po.ReturnHistory">
+    update jcart_return_history
+    set return_id = #{returnId,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      return_status = #{returnStatus,jdbcType=TINYINT},
+      comment = #{comment,jdbcType=VARCHAR},
+      customer_notified = #{customerNotified,jdbcType=BIT}
+    where return_history_id = #{returnHistoryId,jdbcType=BIGINT}
+  </update>
+</mapper>

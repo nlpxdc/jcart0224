@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.cjf.jcartstoreback.dao.CustomerMapper">
+  <resultMap id="BaseResultMap" type="io.cjf.jcartstoreback.po.Customer">
+    <id column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="mobile_verified" jdbcType="BIT" property="mobileVerified" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="email_verified" jdbcType="BIT" property="emailVerified" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="news_subscribed" jdbcType="BIT" property="newsSubscribed" />
+    <result column="reword_points" jdbcType="INTEGER" property="rewordPoints" />
+    <result column="default_address_id" jdbcType="INTEGER" property="defaultAddressId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_id, username, real_name, avatar_url, encrypted_password, mobile, mobile_verified, 
+    email, email_verified, status, create_time, news_subscribed, reword_points, default_address_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jcart_customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jcart_customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="io.cjf.jcartstoreback.po.Customer">
+    insert into jcart_customer (customer_id, username, real_name, 
+      avatar_url, encrypted_password, mobile, 
+      mobile_verified, email, email_verified, 
+      status, create_time, news_subscribed, 
+      reword_points, default_address_id)
+    values (#{customerId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{avatarUrl,jdbcType=VARCHAR}, #{encryptedPassword,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{mobileVerified,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, #{emailVerified,jdbcType=BIT}, 
+      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{newsSubscribed,jdbcType=BIT}, 
+      #{rewordPoints,jdbcType=INTEGER}, #{defaultAddressId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Customer">
+    insert into jcart_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="avatarUrl != null">
+        avatar_url,
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="mobileVerified != null">
+        mobile_verified,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="emailVerified != null">
+        email_verified,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="newsSubscribed != null">
+        news_subscribed,
+      </if>
+      <if test="rewordPoints != null">
+        reword_points,
+      </if>
+      <if test="defaultAddressId != null">
+        default_address_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptedPassword != null">
+        #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileVerified != null">
+        #{mobileVerified,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailVerified != null">
+        #{emailVerified,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsSubscribed != null">
+        #{newsSubscribed,jdbcType=BIT},
+      </if>
+      <if test="rewordPoints != null">
+        #{rewordPoints,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAddressId != null">
+        #{defaultAddressId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartstoreback.po.Customer">
+    update jcart_customer
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileVerified != null">
+        mobile_verified = #{mobileVerified,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailVerified != null">
+        email_verified = #{emailVerified,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsSubscribed != null">
+        news_subscribed = #{newsSubscribed,jdbcType=BIT},
+      </if>
+      <if test="rewordPoints != null">
+        reword_points = #{rewordPoints,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAddressId != null">
+        default_address_id = #{defaultAddressId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartstoreback.po.Customer">
+    update jcart_customer
+    set username = #{username,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      mobile_verified = #{mobileVerified,jdbcType=BIT},
+      email = #{email,jdbcType=VARCHAR},
+      email_verified = #{emailVerified,jdbcType=BIT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      news_subscribed = #{newsSubscribed,jdbcType=BIT},
+      reword_points = #{rewordPoints,jdbcType=INTEGER},
+      default_address_id = #{defaultAddressId,jdbcType=INTEGER}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+</mapper>

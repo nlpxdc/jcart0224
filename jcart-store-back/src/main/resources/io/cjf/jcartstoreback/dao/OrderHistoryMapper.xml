@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.cjf.jcartstoreback.dao.OrderHistoryMapper">
+  <resultMap id="BaseResultMap" type="io.cjf.jcartstoreback.po.OrderHistory">
+    <id column="order_history_id" jdbcType="BIGINT" property="orderHistoryId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="customer_notified" jdbcType="BIT" property="customerNotified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_history_id, order_id, time, order_status, comment, customer_notified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jcart_order_history
+    where order_history_id = #{orderHistoryId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from jcart_order_history
+    where order_history_id = #{orderHistoryId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="io.cjf.jcartstoreback.po.OrderHistory">
+    insert into jcart_order_history (order_history_id, order_id, time, 
+      order_status, comment, customer_notified
+      )
+    values (#{orderHistoryId,jdbcType=BIGINT}, #{orderId,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{orderStatus,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR}, #{customerNotified,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.OrderHistory">
+    insert into jcart_order_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderHistoryId != null">
+        order_history_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="customerNotified != null">
+        customer_notified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderHistoryId != null">
+        #{orderHistoryId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNotified != null">
+        #{customerNotified,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartstoreback.po.OrderHistory">
+    update jcart_order_history
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNotified != null">
+        customer_notified = #{customerNotified,jdbcType=BIT},
+      </if>
+    </set>
+    where order_history_id = #{orderHistoryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartstoreback.po.OrderHistory">
+    update jcart_order_history
+    set order_id = #{orderId,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      comment = #{comment,jdbcType=VARCHAR},
+      customer_notified = #{customerNotified,jdbcType=BIT}
+    where order_history_id = #{orderHistoryId,jdbcType=BIGINT}
+  </update>
+</mapper>

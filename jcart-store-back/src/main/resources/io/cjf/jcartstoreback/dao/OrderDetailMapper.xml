@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.cjf.jcartstoreback.dao.OrderDetailMapper">
+  <resultMap id="BaseResultMap" type="io.cjf.jcartstoreback.po.OrderDetail">
+    <id column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="ship_method" jdbcType="SMALLINT" property="shipMethod" />
+    <result column="ship_address" jdbcType="VARCHAR" property="shipAddress" />
+    <result column="ship_price" jdbcType="DOUBLE" property="shipPrice" />
+    <result column="pay_method" jdbcType="SMALLINT" property="payMethod" />
+    <result column="invoice_address" jdbcType="VARCHAR" property="invoiceAddress" />
+    <result column="invoice_price" jdbcType="DOUBLE" property="invoicePrice" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.cjf.jcartstoreback.po.OrderDetail">
+    <result column="order_products" jdbcType="LONGVARCHAR" property="orderProducts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, ship_method, ship_address, ship_price, pay_method, invoice_address, invoice_price, 
+    comment
+  </sql>
+  <sql id="Blob_Column_List">
+    order_products
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from jcart_order_detail
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from jcart_order_detail
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="io.cjf.jcartstoreback.po.OrderDetail">
+    insert into jcart_order_detail (order_id, ship_method, ship_address, 
+      ship_price, pay_method, invoice_address, 
+      invoice_price, comment, order_products
+      )
+    values (#{orderId,jdbcType=BIGINT}, #{shipMethod,jdbcType=SMALLINT}, #{shipAddress,jdbcType=VARCHAR}, 
+      #{shipPrice,jdbcType=DOUBLE}, #{payMethod,jdbcType=SMALLINT}, #{invoiceAddress,jdbcType=VARCHAR}, 
+      #{invoicePrice,jdbcType=DOUBLE}, #{comment,jdbcType=VARCHAR}, #{orderProducts,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.OrderDetail">
+    insert into jcart_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="shipMethod != null">
+        ship_method,
+      </if>
+      <if test="shipAddress != null">
+        ship_address,
+      </if>
+      <if test="shipPrice != null">
+        ship_price,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="invoiceAddress != null">
+        invoice_address,
+      </if>
+      <if test="invoicePrice != null">
+        invoice_price,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="orderProducts != null">
+        order_products,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="shipMethod != null">
+        #{shipMethod,jdbcType=SMALLINT},
+      </if>
+      <if test="shipAddress != null">
+        #{shipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shipPrice != null">
+        #{shipPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=SMALLINT},
+      </if>
+      <if test="invoiceAddress != null">
+        #{invoiceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicePrice != null">
+        #{invoicePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="orderProducts != null">
+        #{orderProducts,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartstoreback.po.OrderDetail">
+    update jcart_order_detail
+    <set>
+      <if test="shipMethod != null">
+        ship_method = #{shipMethod,jdbcType=SMALLINT},
+      </if>
+      <if test="shipAddress != null">
+        ship_address = #{shipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shipPrice != null">
+        ship_price = #{shipPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=SMALLINT},
+      </if>
+      <if test="invoiceAddress != null">
+        invoice_address = #{invoiceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicePrice != null">
+        invoice_price = #{invoicePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="orderProducts != null">
+        order_products = #{orderProducts,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="io.cjf.jcartstoreback.po.OrderDetail">
+    update jcart_order_detail
+    set ship_method = #{shipMethod,jdbcType=SMALLINT},
+      ship_address = #{shipAddress,jdbcType=VARCHAR},
+      ship_price = #{shipPrice,jdbcType=DOUBLE},
+      pay_method = #{payMethod,jdbcType=SMALLINT},
+      invoice_address = #{invoiceAddress,jdbcType=VARCHAR},
+      invoice_price = #{invoicePrice,jdbcType=DOUBLE},
+      comment = #{comment,jdbcType=VARCHAR},
+      order_products = #{orderProducts,jdbcType=LONGVARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartstoreback.po.OrderDetail">
+    update jcart_order_detail
+    set ship_method = #{shipMethod,jdbcType=SMALLINT},
+      ship_address = #{shipAddress,jdbcType=VARCHAR},
+      ship_price = #{shipPrice,jdbcType=DOUBLE},
+      pay_method = #{payMethod,jdbcType=SMALLINT},
+      invoice_address = #{invoiceAddress,jdbcType=VARCHAR},
+      invoice_price = #{invoicePrice,jdbcType=DOUBLE},
+      comment = #{comment,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+</mapper>

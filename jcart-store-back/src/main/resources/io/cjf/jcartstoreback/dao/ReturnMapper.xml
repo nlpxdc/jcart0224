@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.cjf.jcartstoreback.dao.ReturnMapper">
+  <resultMap id="BaseResultMap" type="io.cjf.jcartstoreback.po.Return">
+    <id column="return_id" jdbcType="INTEGER" property="returnId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="action" jdbcType="TINYINT" property="action" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="reason" jdbcType="TINYINT" property="reason" />
+    <result column="opened" jdbcType="BIT" property="opened" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    return_id, order_id, order_time, customer_id, customer_name, mobile, email, status, 
+    action, product_code, product_name, quantity, reason, opened, comment, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jcart_return
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jcart_return
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="io.cjf.jcartstoreback.po.Return">
+    insert into jcart_return (return_id, order_id, order_time, 
+      customer_id, customer_name, mobile, 
+      email, status, action, 
+      product_code, product_name, quantity, 
+      reason, opened, comment, 
+      create_time, update_time)
+    values (#{returnId,jdbcType=INTEGER}, #{orderId,jdbcType=BIGINT}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{action,jdbcType=TINYINT}, 
+      #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
+      #{reason,jdbcType=TINYINT}, #{opened,jdbcType=BIT}, #{comment,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Return">
+    insert into jcart_return
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="returnId != null">
+        return_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="action != null">
+        action,
+      </if>
+      <if test="productCode != null">
+        product_code,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="opened != null">
+        opened,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="returnId != null">
+        #{returnId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=TINYINT},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=TINYINT},
+      </if>
+      <if test="opened != null">
+        #{opened,jdbcType=BIT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartstoreback.po.Return">
+    update jcart_return
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="action != null">
+        action = #{action,jdbcType=TINYINT},
+      </if>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=TINYINT},
+      </if>
+      <if test="opened != null">
+        opened = #{opened,jdbcType=BIT},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartstoreback.po.Return">
+    update jcart_return
+    set order_id = #{orderId,jdbcType=BIGINT},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      action = #{action,jdbcType=TINYINT},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=TINYINT},
+      opened = #{opened,jdbcType=BIT},
+      comment = #{comment,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </update>
+</mapper>
