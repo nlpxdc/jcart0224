@@ -59,7 +59,7 @@ CREATE TABLE `jcart_product` (
     `product_abstract` varchar(300) not null,
     `price` double not null,
     `discount` double,
-    `quantity` int not null,
+    `stock_quantity` int not null,
     `status` tinyint not null,
     `main_pic_url` varchar(100) not null,
     `reword_points` int,

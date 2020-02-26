@@ -13,7 +13,7 @@ public class Product {
 
     private Double discount;
 
-    private Integer quantity;
+    private Integer stockQuantity;
 
     private Byte status;
 
@@ -71,12 +71,12 @@ public class Product {
         this.discount = discount;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getStockQuantity() {
+        return stockQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
     public Byte getStatus() {
