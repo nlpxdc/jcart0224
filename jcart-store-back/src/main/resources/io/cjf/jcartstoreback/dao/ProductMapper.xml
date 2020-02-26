@@ -8,14 +8,14 @@
     <result column="product_abstract" jdbcType="VARCHAR" property="productAbstract" />
     <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="discount" jdbcType="DOUBLE" property="discount" />
-    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="stock_quantity" jdbcType="INTEGER" property="stockQuantity" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="main_pic_url" jdbcType="VARCHAR" property="mainPicUrl" />
     <result column="reword_points" jdbcType="INTEGER" property="rewordPoints" />
     <result column="sort_order" jdbcType="INTEGER" property="sortOrder" />
   </resultMap>
   <sql id="Base_Column_List">
-    product_id, product_code, product_name, product_abstract, price, discount, quantity, 
+    product_id, product_code, product_name, product_abstract, price, discount, stock_quantity, 
     status, main_pic_url, reword_points, sort_order
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,11 +31,11 @@
   <insert id="insert" parameterType="io.cjf.jcartstoreback.po.Product">
     insert into jcart_product (product_id, product_code, product_name, 
       product_abstract, price, discount, 
-      quantity, status, main_pic_url, 
+      stock_quantity, status, main_pic_url, 
       reword_points, sort_order)
     values (#{productId,jdbcType=INTEGER}, #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
       #{productAbstract,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, 
-      #{quantity,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{mainPicUrl,jdbcType=VARCHAR}, 
+      #{stockQuantity,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{mainPicUrl,jdbcType=VARCHAR}, 
       #{rewordPoints,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Product">
@@ -59,8 +59,8 @@
       <if test="discount != null">
         discount,
       </if>
-      <if test="quantity != null">
-        quantity,
+      <if test="stockQuantity != null">
+        stock_quantity,
       </if>
       <if test="status != null">
         status,
@@ -94,8 +94,8 @@
       <if test="discount != null">
         #{discount,jdbcType=DOUBLE},
       </if>
-      <if test="quantity != null">
-        #{quantity,jdbcType=INTEGER},
+      <if test="stockQuantity != null">
+        #{stockQuantity,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         #{status,jdbcType=TINYINT},
@@ -129,8 +129,8 @@
       <if test="discount != null">
         discount = #{discount,jdbcType=DOUBLE},
       </if>
-      <if test="quantity != null">
-        quantity = #{quantity,jdbcType=INTEGER},
+      <if test="stockQuantity != null">
+        stock_quantity = #{stockQuantity,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
@@ -154,7 +154,7 @@
       product_abstract = #{productAbstract,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
       discount = #{discount,jdbcType=DOUBLE},
-      quantity = #{quantity,jdbcType=INTEGER},
+      stock_quantity = #{stockQuantity,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       main_pic_url = #{mainPicUrl,jdbcType=VARCHAR},
       reword_points = #{rewordPoints,jdbcType=INTEGER},
