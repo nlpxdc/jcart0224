@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>product-search</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-table :data="pageInfo.list" style="width: 100%">
+            <el-table-column prop="mainPicUrl" label="主图">
+            </el-table-column>
+            <el-table-column prop="productCode" label="商品代码">
+            </el-table-column>
+            <el-table-column prop="productName" label="商品名称">
+            </el-table-column>
+            <el-table-column prop="price" label="价格">
+            </el-table-column>
+            <el-table-column prop="discount" label="打折">
+            </el-table-column>
+            <el-table-column prop="stockQuantity" label="库存">
+            </el-table-column>
+            <el-table-column prop="status" label="状态">
+            </el-table-column>
+        </el-table>
+
+        <el-pagination layout="prev, pager, next" :total="pageInfo.total" @current-change="handlePageChange">
+        </el-pagination>
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/product-search.js"></script>
+
+</body>
+
+</html>
