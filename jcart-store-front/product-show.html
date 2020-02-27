@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>product-show</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-input v-model="mainPicUrl" placeholder="请输入主图" readonly></el-input>
+        <el-input v-model="otherPicUrls" placeholder="请输入其他图片" readonly></el-input>
+        <el-input v-model="productName" placeholder="请输入名称" readonly></el-input>
+        <el-input v-model="price" placeholder="请输入价格" readonly></el-input>
+        <el-input v-model="discount" placeholder="请输入打折" readonly></el-input>
+        <el-input v-model="description" placeholder="请输入描述" readonly></el-input>
+        <el-input v-model="stockQuantity" placeholder="请输入库存" readonly></el-input>
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/product-show.js"></script>
+
+</body>
+
+</html>
