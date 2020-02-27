@@ -2,15 +2,21 @@ package io.cjf.jcartstoreback.controller;
 
 import io.cjf.jcartstoreback.dto.in.*;
 import io.cjf.jcartstoreback.dto.out.CustomerGetProfileOutDTO;
+import io.cjf.jcartstoreback.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
 
+    @Autowired
+    private CustomerService customerService;
+
     @PostMapping("/register")
     public Integer register(@RequestBody CustomerRegisterInDTO customerRegisterInDTO){
-        return null;
+        Integer customerId = customerService.register(customerRegisterInDTO);
+        return customerId;
     }
 
     @GetMapping("/login")

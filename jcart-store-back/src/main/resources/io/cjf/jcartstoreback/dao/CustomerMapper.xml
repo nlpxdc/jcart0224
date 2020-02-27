@@ -43,12 +43,9 @@
       #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{newsSubscribed,jdbcType=BIT}, 
       #{rewordPoints,jdbcType=INTEGER}, #{defaultAddressId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Customer">
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Customer" useGeneratedKeys="true" keyProperty="customerId">
     insert into jcart_customer
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="customerId != null">
-        customer_id,
-      </if>
       <if test="username != null">
         username,
       </if>
@@ -90,9 +87,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="customerId != null">
-        #{customerId,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
