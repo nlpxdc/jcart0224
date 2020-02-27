@@ -1,4 +1,4 @@
-package io.cjf.jcartstoreback;
+package io.cjf.jcartstoreback.enumeration;
 
 public enum CustomerStatus {
     Disable,

@@ -1,7 +1,7 @@
 package io.cjf.jcartstoreback.service.impl;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import io.cjf.jcartstoreback.CustomerStatus;
+import io.cjf.jcartstoreback.enumeration.CustomerStatus;
 import io.cjf.jcartstoreback.dao.CustomerMapper;
 import io.cjf.jcartstoreback.dto.in.CustomerRegisterInDTO;
 import io.cjf.jcartstoreback.po.Customer;
@@ -40,5 +40,11 @@ public class CustomerServiceImpl implements CustomerService {
         Integer customerId = customer.getCustomerId();
 
         return customerId;
+    }
+
+    @Override
+    public Customer getByUsername(String username) {
+        Customer customer = customerMapper.selectByUsername(username);
+        return customer;
     }
 }
