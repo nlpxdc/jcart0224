@@ -19,7 +19,8 @@
         <el-input v-model="stockQuantity" placeholder="请输入库存量"></el-input>
         <el-input v-model="rewordPoints" placeholder="请输入积分"></el-input>
         <el-input v-model="sortOrder" placeholder="请输入排序"></el-input>
-        <el-input v-model="description" type="textarea" placeholder="请输入描述"></el-input>
+        <!-- <el-input v-model="description" type="textarea" placeholder="请输入描述"></el-input> -->
+        <textarea id="mytextarea">{{description}}</textarea>
 
         <el-select v-model="selectedStatus" placeholder="请选择状态">
             <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
@@ -37,15 +38,17 @@
         <br>
 
         <el-upload ref="uploadOther" multiple action="" :http-request="uploadOtherImage" :limit="9" accept="image/*"
-            :auto-upload="false" :on-change="handleOnOtherChange" :on-remove="handleOnOtherRemove" :file-list="otherFileList">
+            :auto-upload="false" :on-change="handleOnOtherChange" :on-remove="handleOnOtherRemove"
+            :file-list="otherFileList">
             <el-button slot="trigger" size="small" type="primary">选取其他图片</el-button>
             <el-button size="small" type="success" @click="handleUploadOtherClick">上传</el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
         </el-upload>
-        上传后其他图片：
+        
         <br>
-        <div>
-            <el-link v-for="item in otherPicUrls" type="primary">{{item}}</el-link>
+        <div v-for="item in otherPicUrls">
+            上传后其他图片：
+            <el-link type="primary">{{item}}</el-link>
             <br>
         </div>
         <br>
@@ -55,6 +58,7 @@
 
     </div>
 
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vue.js"></script>
