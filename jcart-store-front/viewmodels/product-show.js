@@ -9,7 +9,12 @@ var app = new Vue({
         description: '',
         stockQuantity: '',
         mainPicUrl: '',
-        otherPicUrls: ''
+        otherPicUrls: []
+    },
+    computed:{
+        otherPicUrlsJson(){
+            return this.otherPicUrls.toString();
+        }
     },
     mounted(){
         console.log('view mounted');
