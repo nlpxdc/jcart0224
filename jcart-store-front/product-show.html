@@ -16,8 +16,9 @@
         <el-input v-model="productName" placeholder="请输入名称" readonly></el-input>
         <el-input v-model="price" placeholder="请输入价格" readonly></el-input>
         <el-input v-model="discount" placeholder="请输入打折" readonly></el-input>
-        <el-input v-model="description" placeholder="请输入描述" readonly></el-input>
+        <!-- <el-input v-model="description" placeholder="请输入描述" readonly></el-input> -->
         <el-input v-model="stockQuantity" placeholder="请输入库存" readonly></el-input>
+        描述<div v-html="description"></div>
     </div>
 
     <script src="assets/js/axios.min.js"></script>
