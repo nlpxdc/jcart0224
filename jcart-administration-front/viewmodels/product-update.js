@@ -26,6 +26,10 @@ var app = new Vue({
     mounted() {
         console.log('view mounted');
 
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+
         var url = new URL(location.href);
         this.productId = url.searchParams.get("productId");
         if (!this.productId) {
@@ -38,6 +42,7 @@ var app = new Vue({
     methods: {
         handleUpdateClick() {
             console.log('update click');
+            this.description = tinyMCE.activeEditor.getContent();
             this.updateProduct();
         },
         handleOnMainChange(val) {

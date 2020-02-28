@@ -19,7 +19,8 @@
         <el-input v-model="stockQuantity" placeholder="请输入库存量"></el-input>
         <el-input v-model="rewordPoints" placeholder="请输入积分"></el-input>
         <el-input v-model="sortOrder" placeholder="请输入排序"></el-input>
-        <el-input v-model="description" type="textarea" placeholder="请输入描述"></el-input>
+        <!-- <el-input v-model="description" type="textarea" placeholder="请输入描述"></el-input> -->
+        <textarea id="mytextarea">{{description}}</textarea>
 
         <el-select v-model="selectedStatus" placeholder="请选择状态">
             <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
@@ -55,6 +56,7 @@
 
     </div>
 
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vue.js"></script>
