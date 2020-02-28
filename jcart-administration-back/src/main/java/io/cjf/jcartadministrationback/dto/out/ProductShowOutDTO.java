@@ -13,6 +13,7 @@ public class ProductShowOutDTO {
     private String mainPicUrl;
     private Integer rewordPoints;
     private Integer sortOrder;
+    private String productAbstract;
     private String description;
     private List<String> otherPicUrls;
 
@@ -110,5 +111,13 @@ public class ProductShowOutDTO {
 
     public void setOtherPicUrls(List<String> otherPicUrls) {
         this.otherPicUrls = otherPicUrls;
+    }
+
+    public String getProductAbstract() {
+        return productAbstract;
+    }
+
+    public void setProductAbstract(String productAbstract) {
+        this.productAbstract = productAbstract;
     }
 }

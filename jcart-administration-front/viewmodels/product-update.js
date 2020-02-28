@@ -9,6 +9,7 @@ var app = new Vue({
         stockQuantity: '',
         rewordPoints: '',
         sortOrder: '',
+        productAbstract: '',
         description: '',
         selectedStatus: 1,
         selectedMainPic: '',
@@ -117,6 +118,7 @@ var app = new Vue({
                 mainPicUrl: this.mainPicUrl,
                 rewordPoints: this.rewordPoints,
                 sortOrder: this.sortOrder,
+                productAbstract: this.productAbstract,
                 description: this.description,
                 otherPicUrls: this.otherPicUrls
             })
@@ -147,6 +149,7 @@ var app = new Vue({
                     app.rewordPoints = product.rewordPoints;
                     app.sortOrder = product.sortOrder;
                     app.mainPicUrl = product.mainPicUrl;
+                    app.productAbstract = product.productAbstract;
                     app.description = product.description;
                     app.otherPicUrls = product.otherPicUrls;
                 })
