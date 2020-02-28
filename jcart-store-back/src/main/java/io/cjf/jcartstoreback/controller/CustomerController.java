@@ -48,7 +48,17 @@ public class CustomerController {
 
     @GetMapping("/getProfile")
     public CustomerGetProfileOutDTO getProfile(@RequestAttribute Integer customerId){
-        return null;
+        Customer customer = customerService.getById(customerId);
+        CustomerGetProfileOutDTO customerGetProfileOutDTO = new CustomerGetProfileOutDTO();
+        customerGetProfileOutDTO.setCustomerId(customer.getCustomerId());
+        customerGetProfileOutDTO.setUsername(customer.getUsername());
+        customerGetProfileOutDTO.setRealName(customer.getRealName());
+        customerGetProfileOutDTO.setMobile(customer.getMobile());
+        customerGetProfileOutDTO.setMobileVerified(customer.getMobileVerified());
+        customerGetProfileOutDTO.setEmail(customer.getEmail());
+        customerGetProfileOutDTO.setEmailVerified(customer.getEmailVerified());
+
+        return customerGetProfileOutDTO;
     }
 
     @PostMapping("/updateProfile")
