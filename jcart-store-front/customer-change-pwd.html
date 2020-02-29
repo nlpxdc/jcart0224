@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>customer-change-pwd</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-input v-model="originPwd" type="password" placeholder="请输入原密码"></el-input>
+        <el-input v-model="newPwd" type="password" placeholder="请输入新密码"></el-input>
+        <el-input v-model="reNewPwd" type="password" placeholder="请输入重复新密码"></el-input>
+
+        <el-button type="primary" @click="handleChangeClick">修改</el-button>
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/customer-change-pwd.js"></script>
+
+</body>
+
+</html>
