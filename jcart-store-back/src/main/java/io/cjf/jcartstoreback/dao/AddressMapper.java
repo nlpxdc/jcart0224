@@ -1,7 +1,12 @@
 package io.cjf.jcartstoreback.dao;
 
 import io.cjf.jcartstoreback.po.Address;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface AddressMapper {
     int deleteByPrimaryKey(Integer addressId);
 
@@ -14,4 +19,8 @@ public interface AddressMapper {
     int updateByPrimaryKeySelective(Address record);
 
     int updateByPrimaryKey(Address record);
+
+//    custom
+
+    List<Address> selectByCustomerId(@Param("customerId") Integer customerId);
 }

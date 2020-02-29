@@ -30,12 +30,9 @@
       #{receiverMobile,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Address">
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.Address" useGeneratedKeys="true" keyProperty="addressId">
     insert into jcart_address
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="addressId != null">
-        address_id,
-      </if>
       <if test="customerId != null">
         customer_id,
       </if>
@@ -53,9 +50,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="addressId != null">
-        #{addressId,jdbcType=INTEGER},
-      </if>
       <if test="customerId != null">
         #{customerId,jdbcType=INTEGER},
       </if>
@@ -103,4 +97,12 @@
       tag = #{tag,jdbcType=VARCHAR}
     where address_id = #{addressId,jdbcType=INTEGER}
   </update>
+
+<!--  custom-->
+  <select id="selectByCustomerId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_address
+    where customer_id = #{customerId}
+  </select>
 </mapper>
