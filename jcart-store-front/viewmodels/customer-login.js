@@ -19,6 +19,8 @@ var app = new Vue({
                 .then(function (response) {
                     console.log(response);
                     var dto = response.data;
+                    localStorage['jcartToken'] = dto.token;
+                    localStorage['expireTimestamp'] = dto.expireTimestamp;
                     console.log(dto);
                     alert('登陆成功');
                 })
