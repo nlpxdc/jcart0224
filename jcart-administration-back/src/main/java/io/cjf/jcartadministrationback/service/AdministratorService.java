@@ -8,4 +8,6 @@ public interface AdministratorService {
 
     Administrator getByUsername(String username);
 
+    void update(Administrator administrator);
+
 }
