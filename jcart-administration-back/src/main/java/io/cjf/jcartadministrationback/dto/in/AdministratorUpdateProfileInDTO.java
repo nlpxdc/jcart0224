@@ -4,8 +4,6 @@ public class AdministratorUpdateProfileInDTO {
     private String realName;
     private String email;
     private String avatarUrl;
-    private String password;
-    private Byte status;
 
     public String getRealName() {
         return realName;
@@ -31,19 +29,4 @@ public class AdministratorUpdateProfileInDTO {
         this.avatarUrl = avatarUrl;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
 }
