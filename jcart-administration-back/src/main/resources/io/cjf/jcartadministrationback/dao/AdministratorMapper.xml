@@ -33,12 +33,9 @@
       #{email,jdbcType=VARCHAR}, #{encryptedPassword,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{avatarUrl,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="io.cjf.jcartadministrationback.po.Administrator">
+  <insert id="insertSelective" parameterType="io.cjf.jcartadministrationback.po.Administrator" useGeneratedKeys="true" keyProperty="administratorId">
     insert into jcart_administrator
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="administratorId != null">
-        administrator_id,
-      </if>
       <if test="username != null">
         username,
       </if>
@@ -62,9 +59,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="administratorId != null">
-        #{administratorId,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
@@ -133,6 +127,21 @@
     <include refid="Base_Column_List" />
     from jcart_administrator
     where username = #{username}
+  </select>
+
+  <delete id="batchDelete">
+    delete from jcart_administrator
+    where administrator_id in
+    <foreach item="item" index="index" collection="administratorIds"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_administrator
   </select>
 
 </mapper>
