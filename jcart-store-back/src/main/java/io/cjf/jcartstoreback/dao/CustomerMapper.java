@@ -21,4 +21,7 @@ public interface CustomerMapper {
 //    custom
 
     Customer selectByUsername(@Param("username") String username);
+
+    Customer selectByEmail(@Param("email") String email);
+    
 }

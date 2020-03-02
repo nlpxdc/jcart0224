@@ -198,4 +198,11 @@
     from jcart_customer
     where username = #{username}
   </select>
+
+  <select id="selectByEmail" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_customer
+    where email = #{email}
+  </select>
 </mapper>
