@@ -94,6 +94,7 @@ public class AdministratorController {
             AdministratorListOutDTO administratorListOutDTO = new AdministratorListOutDTO();
             administratorListOutDTO.setAdministratorId(administrator.getAdministratorId());
             administratorListOutDTO.setUsername(administrator.getUsername());
+            administratorListOutDTO.setRealName(administrator.getRealName());
             administratorListOutDTO.setStatus(administrator.getStatus());
             administratorListOutDTO.setCreateTimestamp(administrator.getCreateTime().getTime());
             return administratorListOutDTO;
