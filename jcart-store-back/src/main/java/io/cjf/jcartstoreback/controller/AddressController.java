@@ -27,7 +27,7 @@ public class AddressController {
         List<AddressListOutDTO> addressListOutDTOS = addresses.stream().map(address -> {
             AddressListOutDTO addressListOutDTO = new AddressListOutDTO();
             addressListOutDTO.setAddressId(address.getAddressId());
-            addressListOutDTO.setContent(address.getContent());
+            addressListOutDTO.setTag(address.getTag());
             addressListOutDTO.setReceiverName(address.getReceiverName());
             addressListOutDTO.setReceiverMobile(address.getReceiverMobile());
             addressListOutDTO.setContent(address.getContent());
