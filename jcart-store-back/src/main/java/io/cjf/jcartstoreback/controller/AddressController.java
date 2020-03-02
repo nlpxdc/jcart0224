@@ -3,6 +3,7 @@ package io.cjf.jcartstoreback.controller;
 import io.cjf.jcartstoreback.dto.in.AddressCreateInDTO;
 import io.cjf.jcartstoreback.dto.in.AddressUpdateInDTO;
 import io.cjf.jcartstoreback.dto.out.AddressListOutDTO;
+import io.cjf.jcartstoreback.dto.out.AddressShowOutDTO;
 import io.cjf.jcartstoreback.po.Address;
 import io.cjf.jcartstoreback.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,19 @@ public class AddressController {
         }).collect(Collectors.toList());
 
         return addressListOutDTOS;
+    }
+
+    @GetMapping("/getById")
+    public AddressShowOutDTO getById(@RequestParam Integer addressId){
+        Address address = addressService.getById(addressId);
+        AddressShowOutDTO addressShowOutDTO = new AddressShowOutDTO();
+        addressShowOutDTO.setAddressId(address.getAddressId());
+        addressShowOutDTO.setTag(address.getTag());
+        addressShowOutDTO.setReceiverName(address.getReceiverName());
+        addressShowOutDTO.setReceiverMobile(address.getReceiverMobile());
+        addressShowOutDTO.setContent(address.getContent());
+
+        return addressShowOutDTO;
     }
 
     @PostMapping("/create")
