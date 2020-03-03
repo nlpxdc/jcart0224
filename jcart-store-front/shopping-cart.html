@@ -22,7 +22,7 @@
             </el-table-column>
             <el-table-column label="数量">
                 <template slot-scope="scope">
-                    <el-input v-model="scope.row.quantity" placeholder="请输入数量"></el-input>
+                    <el-input v-model="scope.row.quantity" type="number" placeholder="请输入数量"></el-input>
                     <el-button size="mini" @click="handleUpdate(scope.$index, scope.row)">修改</el-button>
                 </template>
             </el-table-column>
@@ -37,8 +37,9 @@
                 </template>
             </el-table-column>
         </el-table>
+        总价：{{totalPrice}}
     </div>
-    
+
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vue.js"></script>
