@@ -28,7 +28,7 @@
             </el-table-column>
             <el-table-column label="总计">
                 <template slot-scope="scope">
-                    {{scope.row.unitPrice * scope.row.quantity}}
+                    {{(scope.row.unitPrice * scope.row.quantity).toFixed(2)}}
                 </template>
             </el-table-column>
             <el-table-column label="操作">
