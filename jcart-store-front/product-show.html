@@ -19,6 +19,10 @@
         <!-- <el-input v-model="description" placeholder="请输入描述" readonly></el-input> -->
         <el-input v-model="stockQuantity" placeholder="请输入库存" readonly></el-input>
         描述<div v-html="description"></div>
+
+        <br>
+        <el-input v-model="quantity" type="number" placeholder="请输入数量"></el-input>
+        <el-button type="primary" @click="handleAddToCartClick">添加购物车</el-button>
     </div>
 
     <script src="assets/js/axios.min.js"></script>
