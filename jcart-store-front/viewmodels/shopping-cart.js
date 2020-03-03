@@ -11,9 +11,11 @@ var app = new Vue({
     methods: {
         handleDelete(index, row) {
             console.log('delete click');
-            this.myShoppingCart.splice(index, 1);
-            localStorage['myShoppingCartJson'] = JSON.stringify(this.myShoppingCart);
-            this.$message.success('删除购物车成功');
+            if (confirm('确定删除？')) {
+                this.myShoppingCart.splice(index, 1);
+                localStorage['myShoppingCartJson'] = JSON.stringify(this.myShoppingCart);
+                this.$message.success('删除购物车成功');
+            }
         },
         handleUpdate(index, row) {
             console.log('update click');
