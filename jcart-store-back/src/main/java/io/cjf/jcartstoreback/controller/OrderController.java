@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
+@CrossOrigin
 public class OrderController {
 
     @Autowired
