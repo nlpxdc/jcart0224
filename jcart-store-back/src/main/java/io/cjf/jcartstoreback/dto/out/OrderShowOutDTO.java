@@ -1,5 +1,7 @@
 package io.cjf.jcartstoreback.dto.out;
 
+import io.cjf.jcartstoreback.vo.OrderProductVO;
+
 import java.util.List;
 
 public class OrderShowOutDTO {
@@ -16,7 +18,7 @@ public class OrderShowOutDTO {
     private String invoiceAddress;
     private Double invoicePrice;
     private String comment;
-    private List<OrderProductOutDTO> orderProducts;
+    private List<OrderProductVO> orderProducts;
     private List<OrderHistoryListOutDTO> orderHistories;
 
     public Long getOrderId() {
@@ -123,19 +125,19 @@ public class OrderShowOutDTO {
         this.comment = comment;
     }
 
-    public List<OrderProductOutDTO> getOrderProducts() {
-        return orderProducts;
-    }
-
-    public void setOrderProducts(List<OrderProductOutDTO> orderProducts) {
-        this.orderProducts = orderProducts;
-    }
-
     public List<OrderHistoryListOutDTO> getOrderHistories() {
         return orderHistories;
     }
 
     public void setOrderHistories(List<OrderHistoryListOutDTO> orderHistories) {
         this.orderHistories = orderHistories;
+    }
+
+    public List<OrderProductVO> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProductVO> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }

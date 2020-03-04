@@ -115,5 +115,6 @@
     <include refid="Base_Column_List" />
     from jcart_order
     where customer_id = #{customerId}
+    order by create_time desc
   </select>
 </mapper>
