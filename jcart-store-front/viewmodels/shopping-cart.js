@@ -6,7 +6,7 @@ var app = new Vue({
     computed: {
         totalPrice() {
             var subTotalPrices = this.myShoppingCart.map(p => {
-                return p.unitPrice * p.quantity;
+                return p.unitPrice * p.discount * p.quantity;
             });
             var totalPrice = subTotalPrices.reduce((a, b) => a + b, 0);
             var totalPriceStr = totalPrice.toFixed(2);

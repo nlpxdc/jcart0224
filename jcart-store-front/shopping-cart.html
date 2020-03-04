@@ -18,7 +18,14 @@
             </el-table-column>
             <el-table-column prop="productName" label="商品名称">
             </el-table-column>
-            <el-table-column prop="unitPrice" label="单价">
+            <el-table-column label="价格">
+                <template slot-scope="scope">
+                    原价：{{scope.row.unitPrice}}
+                    <br>
+                    打折：{{scope.row.discount}}
+                    <br>
+                    折后价：{{(scope.row.unitPrice * scope.row.discount).toFixed(2)}}
+                </template>
             </el-table-column>
             <el-table-column label="数量">
                 <template slot-scope="scope">
@@ -28,7 +35,7 @@
             </el-table-column>
             <el-table-column label="总计">
                 <template slot-scope="scope">
-                    {{(scope.row.unitPrice * scope.row.quantity).toFixed(2)}}
+                    {{(scope.row.unitPrice * scope.row.discount * scope.row.quantity).toFixed(2)}}
                 </template>
             </el-table-column>
             <el-table-column label="操作">
