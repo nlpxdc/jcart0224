@@ -107,7 +107,7 @@ CREATE TABLE `jcart_order_detail` (
   DROP TABLE IF EXISTS `jcart_order_history`;
 CREATE TABLE `jcart_order_history` (
     `order_history_id` bigint NOT NULL auto_increment,
-    `order_id` int not null,
+    `order_id` bigint not null,
     `time` datetime not null,
     `order_status` tinyint not null,
     `comment` varchar(300),
