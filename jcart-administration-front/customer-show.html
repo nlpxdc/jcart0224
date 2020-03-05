@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>customer-show</title>
+</head>
+
+<body>
+    <div id="app">
+        客户用户名：{{username}} <br>
+        客户姓名：{{realName}} <br>
+        客户头像：{{avatarUrl}} <br>
+        手机：{{mobile}} <br>
+        邮箱：{{email}} <br>
+        状态：{{status}} <br>
+        注册时间：{{createTimestamp}} <br>
+        订阅新闻：{{newsSubscribed}} <br>
+        积分：{{rewordPoints}} <br>
+        默认地址：{{defaultAddress}} <br>
+        <br>
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/customer-show.js"></script>
+
+</body>
+
+</html>
