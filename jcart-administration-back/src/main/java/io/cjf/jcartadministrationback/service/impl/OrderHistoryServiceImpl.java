@@ -33,6 +33,7 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
         orderHistoryMapper.insertSelective(orderHistory);
         Order order = new Order();
         order.setOrderId(orderHistory.getOrderId());
+        order.setStatus(orderHistory.getOrderStatus());
         order.setUpdateTime(new Date());
         orderService.update(order);
         Long orderHistoryId = orderHistory.getOrderHistoryId();
