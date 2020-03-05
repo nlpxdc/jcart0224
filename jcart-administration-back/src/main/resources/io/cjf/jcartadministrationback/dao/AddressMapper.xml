@@ -103,4 +103,12 @@
       tag = #{tag,jdbcType=VARCHAR}
     where address_id = #{addressId,jdbcType=INTEGER}
   </update>
+
+<!--  custom-->
+  <select id="selectByCustomerId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_address
+    where customer_id = #{customerId}
+  </select>
 </mapper>
