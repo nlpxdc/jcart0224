@@ -44,6 +44,20 @@
         运费：{{shipPrice}}<br>
         支付价：{{totalPrice + shipPrice}}<br>
         <br>
+
+        <el-divider>订单历史</el-divider>
+
+        <el-table :data="orderHistories" style="width: 100%">
+            <el-table-column prop="timestamp" label="时间">
+            </el-table-column>
+            <el-table-column prop="comment" label="备注">
+            </el-table-column>
+            <el-table-column prop="orderStatus" label="订单状态">
+            </el-table-column>
+            <el-table-column prop="customerNotified" label="通知客户">
+            </el-table-column>
+        </el-table>
+
     </div>
 
     <script src="assets/js/axios.min.js"></script>
