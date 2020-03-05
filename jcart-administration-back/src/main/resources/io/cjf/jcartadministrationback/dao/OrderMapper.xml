@@ -10,6 +10,15 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+  <resultMap id="OrderListOutDTO" type="io.cjf.jcartadministrationback.dto.out.OrderListOutDTO">
+    <id column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="real_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="total_price" jdbcType="DOUBLE" property="totalPrice" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
   <sql id="Base_Column_List">
     order_id, customer_id, status, total_price, reword_points, create_time, update_time
   </sql>
@@ -114,4 +123,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
+
+<!--  custom-->
+  <select id="search" resultMap="OrderListOutDTO">
+    SELECT o.*,c.real_name FROM jcart_order as o
+    left join jcart_customer as c
+    on o.customer_id = c.customer_id
+    order by create_time desc
+  </select>
 </mapper>

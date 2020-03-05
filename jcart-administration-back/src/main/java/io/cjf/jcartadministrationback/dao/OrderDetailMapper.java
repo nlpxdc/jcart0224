@@ -1,7 +1,9 @@
 package io.cjf.jcartadministrationback.dao;
 
 import io.cjf.jcartadministrationback.po.OrderDetail;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(Long orderId);
 
