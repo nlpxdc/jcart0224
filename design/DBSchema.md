@@ -110,7 +110,7 @@
 | customer_name  | varchar(20)  | 非空 | 退货客户  |
 | mobile  | varchar(20)  | 非空 | 手机  |
 | email  | varchar(100)  | 非空  | 邮箱  |
-| status  | tinyint  | 非空 | 状态（0等待取货、1正在处理、完成）  |
+| status  | tinyint  | 非空 | 状态（0待处理，1等待取货、2正在处理、3完成）  |
 | action | tinyint  |  | 处理方式（0退货、1换货、2修理）  |
 | product_code  | varchar(50)  | 非空 | 商品代码  |
 | product_name  | varchar(100)  | 非空 | 商品名称  |

@@ -1,7 +1,7 @@
 package io.cjf.jcartstoreback.dto.in;
 
 public class ReturnApplyInDTO {
-    private Integer orderId;
+    private Long orderId;
     private Long orderTimestamp;
     private String customerName;
     private String mobile;
@@ -12,14 +12,6 @@ public class ReturnApplyInDTO {
     private Byte reason;
     private Boolean opened;
     private String comment;
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
 
     public Long getOrderTimestamp() {
         return orderTimestamp;
@@ -99,5 +91,13 @@ public class ReturnApplyInDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }
