@@ -1,7 +1,9 @@
 package io.cjf.jcartadministrationback.dao;
 
 import io.cjf.jcartadministrationback.po.ReturnHistory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ReturnHistoryMapper {
     int deleteByPrimaryKey(Long returnHistoryId);
 

@@ -232,4 +232,11 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where return_id = #{returnId,jdbcType=INTEGER}
   </update>
+
+<!--  custom-->
+  <select id="search" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_return
+  </select>
 </mapper>
