@@ -2,7 +2,16 @@ var app = new Vue({
     el: '#app',
     data: {
         returnId: '',
-        returnHistories: []
+        returnHistories: [],
+        selectedReturnStatus: '',
+        returnStatuses: [
+            { value: 1, label: '待取货' },
+            { value: 2, label: '正在处理' },
+            { value: 3, label: '完成' },
+            { value: 4, label: '拒绝' }
+        ],
+        customerNotified: false,
+        comment: ''
     },
     mounted() {
         console.log('view mounted');
@@ -17,6 +26,29 @@ var app = new Vue({
         this.getHistoryByReturnId();
     },
     methods: {
+        handleCreateClick() {
+            console.log('create click');
+            this.createReturnHistory();
+        },
+        createReturnHistory() {
+            axios.post('/returnhistory/create', {
+                returnId: this.returnId,
+                returnStatus: this.selectedReturnStatus,
+                customerNotified: this.customerNotified,
+                comment: this.comment,
+            })
+                .then(function (response) {
+                    console.log(response);
+                    alert('创建成功');
+                    app.selectedReturnStatus = '';
+                    app.customerNotified = false;
+                    app.comment = '';
+                    app.getHistoryByReturnId();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
         getHistoryByReturnId() {
             axios.get('/returnhistory/getListByReturnId', {
                 params: {

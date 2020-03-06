@@ -27,6 +27,22 @@
         </el-table>
 
         <el-divider>添加退货历史</el-divider>
+
+        <el-select v-model="selectedReturnStatus" placeholder="请选择退货状态">
+            <el-option v-for="item in returnStatuses" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+        <br>
+        <br>
+
+        <el-checkbox v-model="customerNotified">是否通知客户</el-checkbox>
+        <br>
+        <br>
+
+        <el-input v-model="comment" type="textarea" placeholder="请输入备注"></el-input>
+        <br>
+
+        <el-button type="primary" @click="handleCreateClick">添加退货历史</el-button>
     </div>
 
     <script src="assets/js/axios.min.js"></script>

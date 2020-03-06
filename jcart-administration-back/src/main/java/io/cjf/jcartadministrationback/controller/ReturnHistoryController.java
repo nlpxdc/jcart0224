@@ -43,11 +43,11 @@ public class ReturnHistoryController {
         returnHistory.setTime(new Date());
         returnHistory.setReturnStatus(returnHistoryCreateInDTO.getReturnStatus());
         returnHistory.setComment(returnHistoryCreateInDTO.getComment());
-        Boolean customerNotifeid = returnHistoryCreateInDTO.getCustomerNotifeid();
-        returnHistory.setCustomerNotified(customerNotifeid);
+        Boolean customerNotified = returnHistoryCreateInDTO.getCustomerNotified();
+        returnHistory.setCustomerNotified(customerNotified);
         Long returnHistoryId = returnHistoryService.create(returnHistory);
 
-        if (customerNotifeid != null && customerNotifeid){
+        if (customerNotified != null && customerNotified){
             //todo send notification to customer
         }
 
