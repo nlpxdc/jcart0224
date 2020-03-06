@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>returnhistory-index</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-divider>退货历史信息</el-divider>
+        <el-table :data="returnHistories" style="width: 100%">
+            <el-table-column prop="timestamp" label="时间">
+            </el-table-column>
+            <el-table-column prop="returnStatus" label="退货状态">
+            </el-table-column>
+            <el-table-column prop="comment" label="备注">
+            </el-table-column>
+            <el-table-column label="是否通知客户">
+                <template slot-scope="scope">
+                    {{scope.row.customerNotified}}
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <el-divider>添加退货历史</el-divider>
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/returnhistory-index.js"></script>
+
+</body>
+
+</html>
