@@ -97,6 +97,7 @@ public class ReturnController {
         returnShowOutDTO.setProductName(aReturn.getProductName());
         returnShowOutDTO.setQuantity(aReturn.getQuantity());
         returnShowOutDTO.setReason(aReturn.getReason());
+        returnShowOutDTO.setComment(aReturn.getComment());
         returnShowOutDTO.setOpened(aReturn.getOpened());
         returnShowOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
         returnShowOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
