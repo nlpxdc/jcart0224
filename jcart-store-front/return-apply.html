@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>return-apply</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-divider>订单信息</el-divider>
+        <el-input v-model="orderId" placeholder="请输入订单Id"></el-input>
+        <el-date-picker v-model="orderTime" type="date" placeholder="选择日期">
+        </el-date-picker>
+        <br>
+
+        <el-input v-model="customerName" placeholder="请输入客户姓名"></el-input>
+        <el-input v-model="mobile" placeholder="请输入手机"></el-input>
+        <el-input v-model="email" placeholder="请输入邮箱"></el-input>
+
+
+
+        <el-divider>退货商品信息</el-divider>
+        <el-input v-model="productCode" placeholder="请输入商品代码"></el-input>
+        <el-input v-model="productName" placeholder="请输入商品名称"></el-input>
+        <el-input v-model="quantity" type="number" placeholder="请输入数量"></el-input>
+
+        退货理由：<br>
+        <el-radio v-model="reason" :label="0">发货过期</el-radio>
+        <el-radio v-model="reason" :label="1">订单错误</el-radio>
+        <el-radio v-model="reason" :label="2">收到错误商品</el-radio>
+        <el-radio v-model="reason" :label="3">质量问题</el-radio>
+        <br>
+        <el-input v-model="comment" type="textarea" placeholder="请输入备注"></el-input>
+        <br>
+
+        <el-checkbox v-model="opened">是否开封</el-checkbox>
+        <br>
+        <br>
+
+        <el-button type="primary" @click="handleApplyClick">申请</el-button>
+
+        
+
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/return-apply.js"></script>
+
+</body>
+
+</html>
