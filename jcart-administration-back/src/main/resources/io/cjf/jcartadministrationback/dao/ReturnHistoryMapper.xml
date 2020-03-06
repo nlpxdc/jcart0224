@@ -30,12 +30,9 @@
       #{returnStatus,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR}, #{customerNotified,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="io.cjf.jcartadministrationback.po.ReturnHistory">
+  <insert id="insertSelective" parameterType="io.cjf.jcartadministrationback.po.ReturnHistory" useGeneratedKeys="true" keyProperty="returnHistoryId">
     insert into jcart_return_history
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="returnHistoryId != null">
-        return_history_id,
-      </if>
       <if test="returnId != null">
         return_id,
       </if>
@@ -53,9 +50,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="returnHistoryId != null">
-        #{returnHistoryId,jdbcType=BIGINT},
-      </if>
       <if test="returnId != null">
         #{returnId,jdbcType=INTEGER},
       </if>
@@ -103,4 +97,13 @@
       customer_notified = #{customerNotified,jdbcType=BIT}
     where return_history_id = #{returnHistoryId,jdbcType=BIGINT}
   </update>
+<!--  custom-->
+  <select id="selectListByReturnId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_return_history
+    where return_id = #{returnId}
+    order by `time` desc
+  </select>
+
 </mapper>
