@@ -9,4 +9,6 @@ public interface ReturnService {
 
     Return getById(Integer returnId);
 
+    void update(Return aReturn);
+
 }

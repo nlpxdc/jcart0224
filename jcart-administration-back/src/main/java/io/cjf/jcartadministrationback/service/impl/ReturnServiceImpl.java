@@ -26,4 +26,9 @@ public class ReturnServiceImpl implements ReturnService {
         Return aReturn = returnMapper.selectByPrimaryKey(returnId);
         return aReturn;
     }
+
+    @Override
+    public void update(Return aReturn) {
+        returnMapper.updateByPrimaryKeySelective(aReturn);
+    }
 }
