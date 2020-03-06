@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/returnhistory")
+@CrossOrigin
 public class ReturnHistoryController {
 
     @Autowired
