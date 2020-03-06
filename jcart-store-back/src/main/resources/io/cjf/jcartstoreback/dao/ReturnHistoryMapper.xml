@@ -103,4 +103,13 @@
       customer_notified = #{customerNotified,jdbcType=BIT}
     where return_history_id = #{returnHistoryId,jdbcType=BIGINT}
   </update>
+
+<!--  custom-->
+  <select id="selectByReturnId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_return_history
+    where return_id = #{returnId}
+    order by `time` desc
+  </select>
 </mapper>

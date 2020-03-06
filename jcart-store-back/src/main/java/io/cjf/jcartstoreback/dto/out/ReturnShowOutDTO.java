@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ReturnShowOutDTO {
     private Integer returnId;
-    private Integer orderId;
+    private Long orderId;
     private Long orderTimestamp;
     private String customerName;
     private String mobile;
@@ -28,14 +28,6 @@ public class ReturnShowOutDTO {
 
     public void setReturnId(Integer returnId) {
         this.returnId = returnId;
-    }
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
     }
 
     public Long getOrderTimestamp() {
@@ -156,5 +148,13 @@ public class ReturnShowOutDTO {
 
     public void setReturnHistories(List<ReturnHistoryListOutDTO> returnHistories) {
         this.returnHistories = returnHistories;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }
