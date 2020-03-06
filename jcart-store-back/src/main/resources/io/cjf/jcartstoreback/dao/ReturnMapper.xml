@@ -226,4 +226,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where return_id = #{returnId,jdbcType=INTEGER}
   </update>
+
+<!--  custom-->
+  <select id="selectPageByCustomerId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_return
+    where customer_id = #{customerId}
+  </select>
 </mapper>
