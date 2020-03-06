@@ -21,18 +21,25 @@
         邮箱：{{email}} <br>
         状态：{{status}} <br>
         处理方式：{{action}} <br>
-         <br>
+        <br>
 
         <el-divider>退货商品信息</el-divider>
         商品代号：{{productCode}} <br>
         商品名称：{{productName}} <br>
-        数量：{{quantity}}  <br>
+        数量：{{quantity}} <br>
         原因：{{reason}} <br>
         是否开封：{{opened}} <br>
         备注：{{comment}} <br>
         申请时间：{{createTimestamp}} <br>
         更新时间：{{updateTimestamp}} <br>
         <br>
+
+        <el-select v-model="selectedAction" placeholder="请选择处理方式">
+            <el-option v-for="item in actions" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+
+        <el-button type="primary" @click="handleUpdateAction">修改处理方式</el-button>
     </div>
 
     <script src="assets/js/axios.min.js"></script>
