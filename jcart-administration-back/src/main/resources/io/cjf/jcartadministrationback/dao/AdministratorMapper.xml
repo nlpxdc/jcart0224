@@ -129,6 +129,13 @@
     where username = #{username}
   </select>
 
+  <select id="selectByEmail" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_administrator
+    where email = #{email}
+  </select>
+
   <delete id="batchDelete">
     delete from jcart_administrator
     where administrator_id in
