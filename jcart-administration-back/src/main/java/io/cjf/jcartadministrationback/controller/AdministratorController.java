@@ -59,7 +59,7 @@ public class AdministratorController {
             AdministratorLoginOutDTO administratorLoginOutDTO = jwtUtil.issueToken(administrator);
             return administratorLoginOutDTO;
         } else {
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRMSG);
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_PASSWORD_INVALID_ERRMSG);
         }
     }
 
@@ -96,7 +96,11 @@ public class AdministratorController {
     }
 
     @GetMapping("/getPwdResetCode")
-    public void getPwdResetCode(@RequestParam String email) {
+    public void getPwdResetCode(@RequestParam String email) throws ClientException {
+        Administrator administrator = administratorService.getByEmail(email);
+        if (administrator == null){
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_EMAIL_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_EMAIL_NOT_EXIST_ERRMSG);
+        }
         byte[] bytes = secureRandom.generateSeed(3);
         String hex = DatatypeConverter.printHexBinary(bytes);
         SimpleMailMessage message = new SimpleMailMessage();
@@ -113,18 +117,18 @@ public class AdministratorController {
     public void resetPwd(@RequestBody AdministratorResetPwdInDTO administratorResetPwdInDTO) throws ClientException {
         String email = administratorResetPwdInDTO.getEmail();
         if (email == null) {
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PWDRESET_EMAIL_NONE_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PWDRESET_EMAIL_NONE_ERRMSG);
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_PWDRESET_EMAIL_NONE_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_PWDRESET_EMAIL_NONE_ERRMSG);
         }
         String innerResetCode = emailPwdResetCodeMap.get(email);
         if (innerResetCode == null) {
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PWDRESET_INNER_RESETCODE_NONE_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PWDRESET_INNER_RESETCODE_NONE_ERRMSG);
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_PWDRESET_INNER_RESETCODE_NONE_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_PWDRESET_INNER_RESETCODE_NONE_ERRMSG);
         }
         String outerResetCode = administratorResetPwdInDTO.getResetCode();
         if (outerResetCode == null) {
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PWDRESET_OUTER_RESETCODE_NONE_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PWDRESET_OUTER_RESETCODE_NONE_ERRMSG);
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_PWDRESET_OUTER_RESETCODE_NONE_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_PWDRESET_OUTER_RESETCODE_NONE_ERRMSG);
         }
         if (!outerResetCode.equalsIgnoreCase(innerResetCode)){
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PWDRESET_RESETCODE_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PWDRESET_RESETCODE_INVALID_ERRMSG);
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_PWDRESET_RESETCODE_INVALID_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_PWDRESET_RESETCODE_INVALID_ERRMSG);
         }
         Administrator administrator = administratorService.getByEmail(email);
         if (administrator == null){
