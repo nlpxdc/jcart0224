@@ -150,6 +150,7 @@ var app = new Vue({
                     app.sortOrder = product.sortOrder;
                     app.mainPicUrl = product.mainPicUrl;
                     app.productAbstract = product.productAbstract;
+                    //todo load description after html editor init
                     app.description = product.description;
                     app.otherPicUrls = product.otherPicUrls;
                 })
