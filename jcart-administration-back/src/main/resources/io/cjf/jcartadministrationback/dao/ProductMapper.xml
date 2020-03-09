@@ -181,7 +181,7 @@
     <include refid="Base_Column_List" />
     from jcart_product
     <where>
-      <if test="productCode != null">
+      <if test="productCode != null and productCode != ''">
         product_code = #{productCode}
       </if>
       <if test="status != null">
@@ -193,7 +193,7 @@
       <if test="price != null">
         AND price = #{price}
       </if>
-      <if test="productName != null">
+      <if test="productName != null and productName != ''">
         AND product_name like concat('%',#{productName},'%')
       </if>
     </where>
