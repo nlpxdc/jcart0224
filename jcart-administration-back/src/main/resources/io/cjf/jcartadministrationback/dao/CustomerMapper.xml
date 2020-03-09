@@ -202,6 +202,23 @@
     select
     <include refid="Base_Column_List" />
     from jcart_customer
+    <where>
+      <if test="username != null and username != ''">
+        username = #{username}
+      </if>
+      <if test="mobile != null and mobile != ''">
+        AND mobile = #{mobile}
+      </if>
+      <if test="email != null and email != ''">
+        AND email = #{email}
+      </if>
+      <if test="status != null">
+        AND status = #{status}
+      </if>
+      <if test="realName != null and realName != ''">
+        AND real_name like concat('%',#{realName},'%')
+      </if>
+    </where>
   </select>
 
 </mapper>
