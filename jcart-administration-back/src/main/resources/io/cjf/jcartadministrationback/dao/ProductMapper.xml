@@ -190,6 +190,9 @@
       <if test="stockQuantity != null">
         AND stock_quantity &lt;= #{stockQuantity}
       </if>
+      <if test="price != null">
+        AND price = #{price}
+      </if>
     </where>
   </select>
 
