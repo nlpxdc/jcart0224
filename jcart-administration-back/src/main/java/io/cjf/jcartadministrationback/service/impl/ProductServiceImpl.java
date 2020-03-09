@@ -105,7 +105,8 @@ public class ProductServiceImpl implements ProductService {
                 .search(productSearchInDTO.getProductCode(),
                         productSearchInDTO.getStatus(),
                         productSearchInDTO.getStockQuantity(),
-                        productSearchInDTO.getPrice());
+                        productSearchInDTO.getPrice(),
+                        productSearchInDTO.getProductName());
         return page;
     }
 
