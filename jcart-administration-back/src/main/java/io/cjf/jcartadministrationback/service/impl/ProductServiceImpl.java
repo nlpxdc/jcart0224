@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import io.cjf.jcartadministrationback.dao.ProductDetailMapper;
 import io.cjf.jcartadministrationback.dao.ProductMapper;
 import io.cjf.jcartadministrationback.dto.in.ProductCreateInDTO;
+import io.cjf.jcartadministrationback.dto.in.ProductSearchInDTO;
 import io.cjf.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductShowOutDTO;
@@ -97,9 +98,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductListOutDTO> search(Integer pageNum) {
+    public Page<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
+                                          Integer pageNum) {
         PageHelper.startPage(pageNum, 10);
-        Page<ProductListOutDTO> page = productMapper.search();
+        Page<ProductListOutDTO> page = productMapper
+                .search(productSearchInDTO.getProductCode(),
+                        productSearchInDTO.getStatus(),
+                        productSearchInDTO.getStockQuantity());
         return page;
     }
 

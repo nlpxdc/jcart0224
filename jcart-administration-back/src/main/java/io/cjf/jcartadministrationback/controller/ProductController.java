@@ -23,8 +23,8 @@ public class ProductController {
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
-                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum){
-        Page<ProductListOutDTO> page = productService.search(pageNum);
+                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum) {
+        Page<ProductListOutDTO> page = productService.search(productSearchInDTO, pageNum);
 
         PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal(page.getTotal());
@@ -36,29 +36,29 @@ public class ProductController {
     }
 
     @GetMapping("/getById")
-    public ProductShowOutDTO getById(@RequestParam Integer productId){
+    public ProductShowOutDTO getById(@RequestParam Integer productId) {
         ProductShowOutDTO productShowOutDTO = productService.getById(productId);
         return productShowOutDTO;
     }
 
     @PostMapping("/create")
-    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO){
+    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO) {
         Integer productId = productService.create(productCreateInDTO);
         return productId;
     }
 
     @PostMapping("/update")
-    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
+    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO) {
         productService.update(productUpdateInDTO);
     }
 
     @PostMapping("/delete")
-    public void delete(@RequestBody Integer productId){
+    public void delete(@RequestBody Integer productId) {
         productService.delete(productId);
     }
 
     @PostMapping("/batchDelete")
-    public void batchDelete(@RequestBody List<Integer> productIds){
+    public void batchDelete(@RequestBody List<Integer> productIds) {
         productService.batchDelete(productIds);
     }
 

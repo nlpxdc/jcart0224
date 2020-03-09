@@ -180,6 +180,17 @@
     select
     <include refid="Base_Column_List" />
     from jcart_product
+    <where>
+      <if test="productCode != null">
+        product_code = #{productCode}
+      </if>
+      <if test="status != null">
+        AND status = #{status}
+      </if>
+      <if test="stockQuantity != null">
+        AND stock_quantity &lt;= #{stockQuantity}
+      </if>
+    </where>
   </select>
 
 </mapper>
