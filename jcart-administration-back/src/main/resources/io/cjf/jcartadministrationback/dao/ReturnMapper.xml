@@ -238,6 +238,32 @@
     select
     <include refid="Base_Column_List" />
     from jcart_return
+    <where>
+      <if test="returnId != null">
+        return_id = #{returnId}
+      </if>
+      <if test="orderId != null">
+        AND order_id = #{orderId}
+      </if>
+      <if test="startTime != null">
+        AND create_time &gt;= #{startTime}
+      </if>
+      <if test="endTime != null">
+        AND create_time &lt;= #{endTime}
+      </if>
+      <if test="status != null">
+        AND status = #{status}
+      </if>
+      <if test="productCode != null and productCode != ''">
+        AND product_code = #{productCode}
+      </if>
+      <if test="customerName != null and customerName != ''">
+        AND customer_name like concat('%',#{customerName},'%')
+      </if>
+      <if test="productName != null and productName != ''">
+        AND product_name like concat('%',#{productName},'%')
+      </if>
+    </where>
     order by create_time desc
   </select>
 </mapper>
