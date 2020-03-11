@@ -14,24 +14,24 @@
         <el-divider>退货基本信息</el-divider>
         退货Id：{{returnId}} <br>
         订单Id：{{orderId}} <br>
-        订单时间：{{orderTimestamp}} <br>
+        订单时间：{{(new Date(orderTimestamp)).toLocaleString()}} <br>
         客户Id：{{customerId}} <br>
         客户姓名：{{customerName}} <br>
         手机：{{mobile}} <br>
         邮箱：{{email}} <br>
-        状态：{{status}} <br>
-        处理方式：{{action}} <br>
+        状态：{{statuses[status].label}}<br>
+        处理方式：{{actions[action].label}}<br>
         <br>
 
         <el-divider>退货商品信息</el-divider>
         商品代号：{{productCode}} <br>
         商品名称：{{productName}} <br>
         数量：{{quantity}} <br>
-        原因：{{reason}} <br>
-        是否开封：{{opened}} <br>
+        原因：{{reasons[reason].label}} <br>
+        是否开封：<span v-if="opened">是</span><span v-else>否</span> <br>
         备注：{{comment}} <br>
-        申请时间：{{createTimestamp}} <br>
-        更新时间：{{updateTimestamp}} <br>
+        申请时间：{{(new Date(createTimestamp)).toLocaleString()}}<br>
+        更新时间：{{(new Date(updateTimestamp)).toLocaleString()}}<br>
         <br>
 
         <el-select v-model="selectedAction" placeholder="请选择处理方式">

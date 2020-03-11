@@ -27,7 +27,7 @@
         商品代号：{{productCode}}<br>
         商品名称：{{productName}}<br>
         数量：{{quantity}}<br>
-        退货原因：{{reason}}<br>
+        退货原因：{{reasons[reason].label}}<br>
         是否开封：<span v-if="opened">是</span><span v-else>否</span><br>
         备注：{{comment}}<br>
         申请时间：{{(new Date(createTimestamp)).toLocaleString()}}<br>

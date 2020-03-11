@@ -29,10 +29,7 @@
         <el-input v-model="quantity" type="number" placeholder="请输入数量"></el-input>
 
         退货理由：<br>
-        <el-radio v-model="reason" :label="0">发货过期</el-radio>
-        <el-radio v-model="reason" :label="1">订单错误</el-radio>
-        <el-radio v-model="reason" :label="2">收到错误商品</el-radio>
-        <el-radio v-model="reason" :label="3">质量问题</el-radio>
+        <el-radio v-for="item in reasons" v-model="reason" :label="item.value">{{item.label}}</el-radio>
         <br>
         <el-input v-model="comment" type="textarea" placeholder="请输入备注"></el-input>
         <br>
