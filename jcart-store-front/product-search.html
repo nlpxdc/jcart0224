@@ -18,10 +18,14 @@
             </el-table-column>
             <el-table-column prop="productAbstract" label="商品摘要">
             </el-table-column>
-            <el-table-column prop="price" label="价格">
+            <el-table-column label="价格">
+                <template slot-scope="scope">
+                    <s>{{scope.row.price}}</s> <br>
+                    {{(scope.row.price * scope.row.discount).toFixed(2)}}
+                </template>
             </el-table-column>
-            <el-table-column prop="discount" label="打折">
-            </el-table-column>
+            <!-- <el-table-column prop="discount" label="打折">
+            </el-table-column> -->
         </el-table>
 
         <el-pagination layout="prev, pager, next" :total="pageInfo.total" @current-change="handlePageChange">
