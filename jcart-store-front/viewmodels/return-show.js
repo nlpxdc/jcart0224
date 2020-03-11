@@ -17,7 +17,19 @@ var app = new Vue({
         comment: '',
         createTimestamp: '',
         updateTimestamp: '',
-        returnHistories: []
+        returnHistories: [],
+        statuses: [
+            { value: 0, label: '待处理' },
+            { value: 1, label: '待取货' },
+            { value: 2, label: '正在处理' },
+            { value: 3, label: '完成' },
+            { value: 4, label: '拒绝' }
+        ],
+        actions: [
+            { value: 0, label: '退货' },
+            { value: 1, label: '换货' },
+            { value: 2, label: '修理' }
+        ]
     },
     mounted() {
         console.log('view mounted');
