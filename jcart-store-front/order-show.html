@@ -12,15 +12,15 @@
 <body>
     <div id="app">
         订单Id：{{orderId}}<br>
-        订单状态：{{status}}<br>
+        订单状态：{{statuses[status].label}}<br>
         总价：{{totalPrice}}<br>
         积分：{{rewordPoints}}<br>
-        下单时间：{{createTimestamp}}<br>
-        更新时间：{{updateTimestamp}}<br>
-        寄送方式：{{shipMethod}}<br>
+        下单时间：{{(new Date(createTimestamp)).toLocaleString()}}<br>
+        更新时间：{{(new Date(updateTimestamp)).toLocaleString()}}<br>
+        寄送方式：{{shipMethods[shipMethod].label}}<br>
         寄送地址：{{shipAddress}}<br>
         寄送费用：{{shipPrice}}<br>
-        支付方式：{{payMethod}}<br>
+        支付方式：{{payMethods[payMethod].label}}<br>
         发票地址：{{invoiceAddress}}<br>
         发票金额：{{invoicePrice}}<br>
         备注：{{comment}}<br>
@@ -34,7 +34,10 @@
             </el-table-column>
             <el-table-column prop="quantity" label="数量">
             </el-table-column>
-            <el-table-column prop="unitPrice" label="单价">
+            <el-table-column label="单价">
+                <template slot-scope="scope">
+                    {{scope.row.unitPrice.toFixed(2)}}
+                </template>
             </el-table-column>
             <el-table-column prop="totalPrice" label="总计">
             </el-table-column>
@@ -46,9 +49,15 @@
 
         订单历史
         <el-table :data="orderHistories" style="width: 100%">
-            <el-table-column prop="timestamp" label="时间">
+            <el-table-column label="时间">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.timestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
             <el-table-column prop="orderStatus" label="订单状态">
+                <template slot-scope="scope">
+                    {{statuses[scope.row.orderStatus].label}}
+                </template>
             </el-table-column>
             <el-table-column prop="comment" label="备注">
             </el-table-column>
