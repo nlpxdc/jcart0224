@@ -14,9 +14,15 @@
         <el-table :data="pageInfo.list" style="width: 100%">
             <el-table-column prop="returnId" label="退货Id">
             </el-table-column>
-            <el-table-column prop="status" label="退货状态">
+            <el-table-column label="退货状态">
+                <template slot-scope="scope">
+                    {{statuses[scope.row.status].label}}
+                </template>
             </el-table-column>
-            <el-table-column prop="createTimestamp" label="退货申请时间">
+            <el-table-column label="退货申请时间">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.createTimestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
             <el-table-column prop="orderId" label="订单Id">
             </el-table-column>
