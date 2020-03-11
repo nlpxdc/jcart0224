@@ -38,13 +38,25 @@
             </el-table-column>
             <el-table-column prop="customerName" label="客户姓名">
             </el-table-column>
-            <el-table-column prop="status" label="状态">
+            <el-table-column label="状态">
+                <template slot-scope="scope">
+                    {{statuses[scope.row.status].label}}
+                </template>
             </el-table-column>
-            <el-table-column prop="totalPrice" label="总价">
+            <el-table-column label="总价">
+                <template slot-scope="scope">
+                    {{scope.row.totalPrice.toFixed(2)}}
+                </template>
             </el-table-column>
             <el-table-column prop="createTimestamp" label="下单时间">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.createTimestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
             <el-table-column prop="updateTimestamp" label="修改时间">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.updateTimestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
         </el-table>
 
