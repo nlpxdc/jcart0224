@@ -16,9 +16,9 @@
         客户头像：{{avatarUrl}} <br>
         手机：{{mobile}} <br>
         邮箱：{{email}} <br>
-        状态：{{status}} <br>
-        注册时间：{{createTimestamp}} <br>
-        订阅新闻：{{newsSubscribed}} <br>
+        状态：{{statuses[status].label}} <br>
+        注册时间：{{(new Date(createTimestamp)).toLocaleString()}} <br>
+        订阅新闻：<span v-if="newsSubscribed">是</span><span v-else>否</span> <br>
         积分：{{rewordPoints}} <br>
         默认地址：{{defaultAddress}} <br>
         <br>
