@@ -48,10 +48,19 @@
             <el-table-column prop="productName" label="商品名称">
             </el-table-column>
             <el-table-column prop="status" label="状态">
+                <template slot-scope="scope">
+                    {{statuses[scope.row.status].label}}
+                </template>
             </el-table-column>
-            <el-table-column prop="createTimestamp" label="申请日期">
+            <el-table-column label="申请日期">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.createTimestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
-            <el-table-column prop="updateTimestamp" label="修改日期">
+            <el-table-column label="修改日期">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.updateTimestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
         </el-table>
 
