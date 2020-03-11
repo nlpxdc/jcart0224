@@ -43,6 +43,9 @@
                 </template>
             </el-table-column>
             <el-table-column prop="createTimestamp" label="注册日期">
+                <template slot-scope="scope">
+                    {{(new Date(scope.row.createTimestamp)).toLocaleString()}}
+                </template>
             </el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
