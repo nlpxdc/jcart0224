@@ -25,9 +25,9 @@ var app = new Vue({
                     app.username = me.username;
                     app.realName = me.realName;
                     app.mobile = me.mobile;
-                    app.mobileVerified = me.mobileVerified.toString();
+                    app.mobileVerified = me.mobileVerified;
                     app.email = me.email;
-                    app.emailVerified = me.emailVerified.toString();
+                    app.emailVerified = me.emailVerified;
                 })
                 .catch(function (error) {
                     console.log(error);

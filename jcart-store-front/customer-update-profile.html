@@ -13,10 +13,18 @@
     <div id="app">
         <el-input v-model="username" placeholder="请输入用户名" readonly></el-input>
         <el-input v-model="realName" placeholder="请输入姓名"></el-input>
-        <el-input v-model="mobile" placeholder="请输入手机"></el-input>
-        <el-input v-model="mobileVerified" placeholder="请输入手机" readonly></el-input>
-        <el-input v-model="email" placeholder="请输入邮箱"></el-input>
-        <el-input v-model="emailVerified" placeholder="请输入邮箱" readonly></el-input>
+        手机：{{mobile}} 
+        <i v-if="mobileVerified" class="el-icon-circle-check"></i>
+        <i v-else class="el-icon-circle-close"></i>
+        <br>
+        <!-- <el-input v-model="mobile" placeholder="请输入手机"></el-input> -->
+        <!-- <el-input v-model="mobileVerified" placeholder="请输入手机" readonly></el-input> -->
+        邮箱：{{email}} 
+        <i v-if="emailVerified" class="el-icon-circle-check"></i>
+        <i v-else class="el-icon-circle-close"></i>
+        <br>
+        <!-- <el-input v-model="email" placeholder="请输入邮箱"></el-input> -->
+        <!-- <el-input v-model="emailVerified" placeholder="请输入邮箱" readonly></el-input> -->
         <br>
         <el-button type="primary" @click="handleUpdateClick">更新</el-button>
     </div>
