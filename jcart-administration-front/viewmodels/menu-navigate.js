@@ -43,9 +43,5 @@ var app = new Vue({
             console.log('menu item selected', index, indexPath);
             this.selectMainPage = index;
         }
-        // handleMenuItemClick(val) {
-        //     console.log('menu item click', val.index);
-        //     this.selectMainPage = val.index;
-        // }
     }
 })
