@@ -26,7 +26,10 @@
         <el-button type="primary" @click="handleClearClick">清空条件</el-button>
 
         <el-table :data="pageInfo.list" style="width: 100%">
-            <el-table-column prop="mainPicUrl" label="主图">
+            <el-table-column label="主图">
+                <template slot-scope="scope">
+                    <el-image style="width: 100px; height: 100px" :src="scope.row.mainPicUrl" fit="fill"></el-image>
+                </template>
             </el-table-column>
             <el-table-column prop="productCode" label="商品代码">
             </el-table-column>

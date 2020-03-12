@@ -33,7 +33,8 @@
             <el-button size="small" type="success" @click="handleUploadMainClick">上传</el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
         </el-upload>
-        上传后主图：<el-link type="primary">{{mainPicUrl}}</el-link>
+        上传后主图：<el-link type="primary">{{mainPicUrl}}</el-link><br>
+        <el-image style="width: 100px; height: 100px" :src="mainPicUrl" :fit="fit"></el-image>
         <br>
         <br>
 
@@ -44,11 +45,12 @@
             <el-button size="small" type="success" @click="handleUploadOtherClick">上传</el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
         </el-upload>
-        
+
         <br>
         <div v-for="item in otherPicUrls">
             上传后其他图片：
-            <el-link type="primary">{{item}}</el-link>
+            <el-link type="primary">{{item}}</el-link><br>
+            <el-image style="width: 60px; height: 60px" :src="item" :fit="fit"></el-image>
             <br>
         </div>
         <br>
