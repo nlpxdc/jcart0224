@@ -16,42 +16,21 @@
             <el-header>JCart电商系统</el-header>
             <el-container>
                 <el-aside width="200px">
-                    <el-menu background-color="#545c64"
-                        text-color="#fff" active-text-color="#ffd04b">
-                        <el-submenu index="1">
+                    <el-menu unique-opened background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
+                        @select="handleMenuItemSelect">
+                        <el-submenu v-for="subMenu in subMenus" :key="subMenu.index" :index="subMenu.index">
                             <template slot="title">
-                                <i class="el-icon-goods"></i>
-                                <span>商品管理</span>
+                                <i :class="subMenu.icon"></i>
+                                <span>{{subMenu.name}}</span>
                             </template>
-                            <el-menu-item index="1-1" @click="handleMenuItemClick">商品列表</el-menu-item>
-                        </el-submenu>
-                        <el-submenu index="2">
-                            <template slot="title">
-                                <i class="el-icon-s-custom"></i>
-                                <span>客户管理</span>
-                            </template>
-                            <el-menu-item index="2-1" @click="handleMenuItemClick">客户列表</el-menu-item>
-                        </el-submenu>
-                        <el-submenu index="3">
-                            <template slot="title">
-                                <i class="el-icon-s-order"></i>
-                                <span>销售管理</span>
-                            </template>
-                            <el-menu-item index="3-1" @click="handleMenuItemClick">订单列表</el-menu-item>
-                            <el-menu-item index="3-2" @click="handleMenuItemClick">退货列表</el-menu-item>
-                        </el-submenu>
-                        <el-submenu index="4">
-                            <template slot="title">
-                                <i class="el-icon-user"></i>
-                                <span>用户管理</span>
-                            </template>
-                            <el-menu-item index="4-1" @click="handleMenuItemClick">用户列表</el-menu-item>
+                            <el-menu-item v-for="menuItem in subMenu.menuItems" :key="menuItem.index"
+                                :index="menuItem.index">{{menuItem.name}}</el-menu-item>
                         </el-submenu>
                     </el-menu>
                 </el-aside>
                 <el-main>
                     <jc-product-search-page v-if="selectMainPage == '1-1'"></jc-product-search-page>
-                    <jc-customer-search-page v-if="selectMainPage == '2-1'"></jc-customer-search-page>
+                    <jc-customer-search-page v-if="selectMainPage == '2-2'"></jc-customer-search-page>
                 </el-main>
             </el-container>
         </el-container>
