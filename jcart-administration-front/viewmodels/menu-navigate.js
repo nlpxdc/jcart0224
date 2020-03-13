@@ -33,7 +33,7 @@ var app = new Vue({
                 index: '4',
                 icon: 'el-icon-user',
                 menuItems: [
-                    { name: '用户列表', index: '4-5', route: '' }
+                    { name: '用户列表', index: '4-5', route: '/administrator/index' }
                 ]
             }
         ]
