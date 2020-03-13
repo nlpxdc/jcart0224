@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        jcProductId: '',
         selectMainPage: '',
         subMenus: [
             {
