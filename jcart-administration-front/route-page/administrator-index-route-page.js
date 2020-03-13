@@ -1,6 +1,7 @@
 const AdministratorIndexRoutePage = {
     template: `
     <div id="app">
+        <el-button type="primary" @click="handleCreateClick">添加</el-button>
         <el-button type="danger" @click="handleBatchDeleteClick">批量删除</el-button>
         <el-table :data="pageInfo.list" style="width: 100%" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55">
@@ -55,6 +56,10 @@ const AdministratorIndexRoutePage = {
             console.log('page change', val);
             this.pageNum = val;
             this.getAdministrators();
+        },
+        handleCreateClick() {
+            console.log('create click');
+            this.$router.push('/administrator/create');
         },
         handleDelete(index, row) {
             console.log('delete click');

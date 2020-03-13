@@ -21,7 +21,7 @@
                         我的<i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item v-for="item in my" :divided="item.divided" :command="item.route">{{item.name}}</el-dropdown-item>
+                        <el-dropdown-item v-for="item in my" :key="item.route" :divided="item.divided" :command="item.route">{{item.name}}</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </el-header>
@@ -62,6 +62,7 @@
     <script src="route-page/return-search-route-page.js"></script>
     <script src="route-page/administrator-index-route-page.js"></script>
     <script src="route-page/administrator-update-profile-route-page.js"></script>
+    <script src="route-page/administrator-create-route-page.js"></script>
 
     <script src="route-page/router.js"></script>
 
