@@ -9,6 +9,8 @@ const routes = [
     { path: '/product/update/:productId', component: ProductUpdateRoutePage },
 
     { path: '/customer/search', component: CustomerSearchRoutePage },
+    { path: '/customer/show/:customerId', component: CustomerShowRoutePage },
+    
     { path: '/order/search', component: OrderSearchRoutePage },
     { path: '/return/search', component: ReturnSearchRoutePage }
 
