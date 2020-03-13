@@ -34,7 +34,7 @@
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
         </el-upload>
         上传后主图：<el-link type="primary">{{mainPicUrl}}</el-link><br>
-        <el-image style="width: 100px; height: 100px" :src="mainPicUrl" :fit="fit"></el-image>
+        <el-image style="width: 100px; height: 100px" :src="mainPicUrl" fit="fill"></el-image>
         <br>
         <br>
 
@@ -48,7 +48,7 @@
         <br>
         <div v-for="item in otherPicUrls">
             <el-link  type="primary">{{item}}</el-link><br>
-            <el-image style="width: 60px; height: 60px" :src="item" :fit="fit"></el-image>
+            <el-image style="width: 60px; height: 60px" :src="item" fit="fill"></el-image>
             <br>
         </div>
         <br>
