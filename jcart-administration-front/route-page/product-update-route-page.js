@@ -92,7 +92,7 @@ const ProductUpdateRoutePage = {
     methods: {
         handleGoBack() {
             console.log('go back click');
-            app.selectMainPage = '1-1';
+            this.$router.go(-1);
         },
         handleUpdateClick() {
             console.log('update click');
