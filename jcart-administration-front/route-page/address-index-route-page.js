@@ -12,6 +12,12 @@ const AddressIndexRoutePage = {
             </el-table-column>
             <el-table-column prop="receiverMobile" label="收货人手机">
             </el-table-column>
+            <el-table-column label="操作">
+                <template slot-scope="scope">
+                    <el-button type="primary" size="mini" @click="handleShowClick(scope.$index, scope.row)">详情
+                    </el-button>
+                </template>
+            </el-table-column>
         </el-table>
     </div>
     `,
@@ -36,6 +42,9 @@ const AddressIndexRoutePage = {
         handleGoBack() {
             console.log('go back click');
             this.$router.back();
+        },
+        handleShowClick(index, row) {
+            this.$router.push('/address/show/' + row.addressId);
         },
         getAddressByCustomerId() {
             axios.get('/address/getListByCustomerId', {

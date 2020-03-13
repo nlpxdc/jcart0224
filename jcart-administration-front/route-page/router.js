@@ -11,6 +11,7 @@ const routes = [
     { path: '/customer/search', component: CustomerSearchRoutePage },
     { path: '/customer/show/:customerId', component: CustomerShowRoutePage },
     { path: '/address/index/:customerId', component: AddressIndexRoutePage },
+    { path: '/address/show/:addressId', component: AddressShowRoutePage },
     
     
     { path: '/order/search', component: OrderSearchRoutePage },
