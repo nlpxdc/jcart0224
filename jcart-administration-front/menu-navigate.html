@@ -16,15 +16,16 @@
             <el-header>JCart电商系统</el-header>
             <el-container>
                 <el-aside width="200px">
-                    <el-menu unique-opened background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
-                        @select="handleMenuItemSelect">
+                    <!-- <el-menu unique-opened background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
+                        @select="handleMenuItemSelect"> -->
+                    <el-menu unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
                         <el-submenu v-for="subMenu in subMenus" :key="subMenu.index" :index="subMenu.index">
                             <template slot="title">
                                 <i :class="subMenu.icon"></i>
                                 <span>{{subMenu.name}}</span>
                             </template>
                             <el-menu-item v-for="menuItem in subMenu.menuItems" :key="menuItem.index"
-                                :index="menuItem.index">{{menuItem.name}}</el-menu-item>
+                                :index="menuItem.index" :route="menuItem.route">{{menuItem.name}}</el-menu-item>
                         </el-submenu>
                     </el-menu>
                 </el-aside>
