@@ -24,7 +24,7 @@ var app = new Vue({
                 index: '3',
                 icon: 'el-icon-s-order',
                 menuItems: [
-                    { name: '订单列表', index: '3-3', route: '' },
+                    { name: '订单列表', index: '3-3', route: '/order/search' },
                     { name: '退货列表', index: '3-4', route: '' }
                 ]
             },
