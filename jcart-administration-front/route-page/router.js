@@ -5,11 +5,12 @@ const routes = [
     { path: '/customer/search', component: CustomerSearchRoutePage },
     { path: '/order/search', component: OrderSearchRoutePage },
     { path: '/return/search', component: ReturnSearchRoutePage },
-    { path: '/administrator/index', component: AdministratorIndexRoutePage },
+
     { path: '/administrator/updateprofile', component: AdministratorUpdateProfileRoutePage },
-    { path: '/administrator/create', component: AdministratorCreateRoutePage }
-    
-    
+    { path: '/administrator/index', component: AdministratorIndexRoutePage },
+    { path: '/administrator/create', component: AdministratorCreateRoutePage },
+    { path: '/administrator/update/:administratorId', component: AdministratorUpdateRoutePage }
+
 ];
 
 const router = new VueRouter({

@@ -92,7 +92,7 @@ const ProductUpdateRoutePage = {
     methods: {
         handleGoBack() {
             console.log('go back click');
-            this.$router.go(-1);
+            this.$router.back();
         },
         handleUpdateClick() {
             console.log('update click');
