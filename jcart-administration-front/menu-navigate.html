@@ -16,8 +16,6 @@
             <el-header>JCart电商系统</el-header>
             <el-container>
                 <el-aside width="200px">
-                    <!-- <el-menu unique-opened background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
-                        @select="handleMenuItemSelect"> -->
                     <el-menu unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
                         <el-submenu v-for="subMenu in subMenus" :key="subMenu.index" :index="subMenu.index">
                             <template slot="title">
@@ -31,12 +29,6 @@
                 </el-aside>
                 <el-main>
                     <router-view></router-view>
-                    <!-- <jc-product-search-page v-if="selectMainPage == '1-1'"></jc-product-search-page>
-                    <jc-customer-search-page v-if="selectMainPage == '2-2'"></jc-customer-search-page>
-                    <jc-order-search-page v-if="selectMainPage == '3-3'"></jc-order-search-page>
-                    <jc-return-search-page v-if="selectMainPage == '3-4'"></jc-return-search-page>
-                    <jc-administrator-index-page v-if="selectMainPage == '4-5'"></jc-administrator-index-page>
-                    <jc-product-update-page v-if="selectMainPage == '1-6'"></jc-product-update-page> -->
                 </el-main>
             </el-container>
         </el-container>
@@ -50,14 +42,6 @@
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/elementui.js"></script>
     <script src="assets/js/vue-router.js"></script>
-
-
-    <!-- <script src="page/product-search-page.js"></script>
-    <script src="page/customer-search-page.js"></script>
-    <script src="page/order-search-page.js"></script>
-    <script src="page/return-search-page.js"></script>
-    <script src="page/administrator-index-page.js"></script>
-    <script src="page/product-update-page.js"></script> -->
 
     <script src="route-page/product-search-route-page.js"></script>
     <script src="route-page/customer-search-route-page.js"></script>
