@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/elementui.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <title>menu-navigate</title>
 </head>
 
@@ -13,10 +14,21 @@
     <div id="app">
 
         <el-container>
-            <el-header>JCart电商系统</el-header>
+            <el-header>
+                JCart电商系统
+                <el-dropdown style="float: right;" @command="handleMyItemClick">
+                    <span class="el-dropdown-link">
+                        我的<i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item v-for="item in my" :divided="item.divided" :command="item.route">{{item.name}}</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </el-header>
             <el-container>
                 <el-aside width="200px">
-                    <el-menu unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                    <el-menu unique-opened router background-color="#545c64" text-color="#fff"
+                        active-text-color="#ffd04b">
                         <el-submenu v-for="subMenu in subMenus" :key="subMenu.index" :index="subMenu.index">
                             <template slot="title">
                                 <i :class="subMenu.icon"></i>
@@ -44,11 +56,13 @@
     <script src="assets/js/vue-router.js"></script>
 
     <script src="route-page/product-search-route-page.js"></script>
+    <script src="route-page/product-update-route-page.js"></script>
     <script src="route-page/customer-search-route-page.js"></script>
     <script src="route-page/order-search-route-page.js"></script>
     <script src="route-page/return-search-route-page.js"></script>
     <script src="route-page/administrator-index-route-page.js"></script>
-    <script src="route-page/product-update-route-page.js"></script>
+    <script src="route-page/administrator-update-profile-route-page.js"></script>
+
     <script src="route-page/router.js"></script>
 
     <script src="viewmodels/menu-navigate.js"></script>
