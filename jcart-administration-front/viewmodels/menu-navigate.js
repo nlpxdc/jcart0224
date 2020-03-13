@@ -47,7 +47,10 @@ var app = new Vue({
                 case '1-1':
                     router.push('/product/search');
                     break;
-            
+                case '2-2':
+                    router.push('/customer/search');
+                    break;
+
                 default:
                     break;
             }
