@@ -29,12 +29,13 @@
                     </el-menu>
                 </el-aside>
                 <el-main>
-                    <jc-product-search-page v-if="selectMainPage == '1-1'"></jc-product-search-page>
+                    <router-view></router-view>
+                    <!-- <jc-product-search-page v-if="selectMainPage == '1-1'"></jc-product-search-page>
                     <jc-customer-search-page v-if="selectMainPage == '2-2'"></jc-customer-search-page>
                     <jc-order-search-page v-if="selectMainPage == '3-3'"></jc-order-search-page>
                     <jc-return-search-page v-if="selectMainPage == '3-4'"></jc-return-search-page>
                     <jc-administrator-index-page v-if="selectMainPage == '4-5'"></jc-administrator-index-page>
-                    <jc-product-update-page v-if="selectMainPage == '1-6'"></jc-product-update-page>
+                    <jc-product-update-page v-if="selectMainPage == '1-6'"></jc-product-update-page> -->
                 </el-main>
             </el-container>
         </el-container>
@@ -47,14 +48,18 @@
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/elementui.js"></script>
+    <script src="assets/js/vue-router.js"></script>
 
 
-    <script src="page/product-search-page.js"></script>
+    <!-- <script src="page/product-search-page.js"></script>
     <script src="page/customer-search-page.js"></script>
     <script src="page/order-search-page.js"></script>
     <script src="page/return-search-page.js"></script>
     <script src="page/administrator-index-page.js"></script>
-    <script src="page/product-update-page.js"></script>
+    <script src="page/product-update-page.js"></script> -->
+
+    <script src="route-page/product-search-route-page.js"></script>
+    <script src="route-page/router.js"></script>
 
     <script src="viewmodels/menu-navigate.js"></script>
 

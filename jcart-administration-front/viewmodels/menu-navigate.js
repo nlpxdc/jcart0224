@@ -1,8 +1,9 @@
 var app = new Vue({
+    router: router,
     el: '#app',
     data: {
-        jcProductId: '',
-        selectMainPage: '',
+        // jcProductId: '',
+        // selectMainPage: '',
         subMenus: [
             {
                 name: "商品管理",
@@ -42,7 +43,15 @@ var app = new Vue({
     methods: {
         handleMenuItemSelect(index, indexPath) {
             console.log('menu item selected', index, indexPath);
-            this.selectMainPage = index;
+            switch (index) {
+                case '1-1':
+                    router.push('/product/search');
+                    break;
+            
+                default:
+                    break;
+            }
+            // this.selectMainPage = index;
         }
     }
 })
