@@ -29,7 +29,6 @@ const AdministratorIndexRoutePage = {
                 </template>
             </el-table-column>
         </el-table>
-        </el-table>
 
         <el-pagination layout="prev, pager, next" :total="pageInfo.total" @current-change="handlePageChange">
         </el-pagination>

@@ -1,58 +1,63 @@
 const OrderSearchRoutePage = {
     template: `
-    <div id="app">
+<div id="app">
 
-        <el-input v-model="orderId" placeholder="请输入订单Id"></el-input>
-        <el-input v-model="customerName" placeholder="请输入客户姓名"></el-input>
-        <el-input v-model="totalPrice" placeholder="请输入金额"></el-input>
+    <el-input v-model="orderId" placeholder="请输入订单Id"></el-input>
+    <el-input v-model="customerName" placeholder="请输入客户姓名"></el-input>
+    <el-input v-model="totalPrice" placeholder="请输入金额"></el-input>
 
-        <el-select v-model="selectedStatus" placeholder="请选择状态">
-            <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
-            </el-option>
-        </el-select>
-        <br>
+    <el-select v-model="selectedStatus" placeholder="请选择状态">
+        <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
+        </el-option>
+    </el-select>
+    <br>
 
-        <el-date-picker v-model="startTime" type="date" placeholder="选择开始日期">
-        </el-date-picker>
-        <br>
+    <el-date-picker v-model="startTime" type="date" placeholder="选择开始日期">
+    </el-date-picker>
+    <br>
 
-        <el-date-picker v-model="endTime" type="date" placeholder="选择结束日期">
-        </el-date-picker>
-        <br>
+    <el-date-picker v-model="endTime" type="date" placeholder="选择结束日期">
+    </el-date-picker>
+    <br>
 
-        <el-button type="primary" @click="handleSearchClick">搜索</el-button>
-        <el-button type="primary" @click="handleClearClick">清空条件</el-button>
+    <el-button type="primary" @click="handleSearchClick">搜索</el-button>
+    <el-button type="primary" @click="handleClearClick">清空条件</el-button>
 
-        <el-table :data="pageInfo.list" style="width: 100%">
-            <el-table-column prop="orderId" label="订单Id">
-            </el-table-column>
-            <el-table-column prop="customerName" label="客户姓名">
-            </el-table-column>
-            <el-table-column label="状态">
-                <template slot-scope="scope">
-                    {{statuses[scope.row.status].label}}
-                </template>
-            </el-table-column>
-            <el-table-column label="总价">
-                <template slot-scope="scope">
-                    {{scope.row.totalPrice.toFixed(2)}}
-                </template>
-            </el-table-column>
-            <el-table-column prop="createTimestamp" label="下单时间">
-                <template slot-scope="scope">
-                    {{(new Date(scope.row.createTimestamp)).toLocaleString()}}
-                </template>
-            </el-table-column>
-            <el-table-column prop="updateTimestamp" label="修改时间">
-                <template slot-scope="scope">
-                    {{(new Date(scope.row.updateTimestamp)).toLocaleString()}}
-                </template>
-            </el-table-column>
-        </el-table>
+    <el-table :data="pageInfo.list" style="width: 100%">
+        <el-table-column prop="orderId" label="订单Id">
+        </el-table-column>
+        <el-table-column prop="customerName" label="客户姓名">
+        </el-table-column>
+        <el-table-column label="状态">
+            <template slot-scope="scope">
+                {{statuses[scope.row.status].label}}
+            </template>
+        </el-table-column>
+        <el-table-column label="总价">
+            <template slot-scope="scope">
+                {{scope.row.totalPrice.toFixed(2)}}
+            </template>
+        </el-table-column>
+        <el-table-column prop="createTimestamp" label="下单时间">
+            <template slot-scope="scope">
+                {{(new Date(scope.row.createTimestamp)).toLocaleString()}}
+            </template>
+        </el-table-column>
+        <el-table-column prop="updateTimestamp" label="修改时间">
+            <template slot-scope="scope">
+                {{(new Date(scope.row.updateTimestamp)).toLocaleString()}}
+            </template>
+        </el-table-column>
+        <el-table-column label="操作">
+            <template slot-scope="scope">
+                <el-button size="mini" type="primary" @click="handleShowClick(scope.$index, scope.row)">详情</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
 
-        <el-pagination layout="prev, pager, next" :total="pageInfo.total" @current-change="handlePageChange">
-        </el-pagination>
-    </div>
+    <el-pagination layout="prev, pager, next" :total="pageInfo.total" @current-change="handlePageChange">
+    </el-pagination>
+</div>
     `,
     data() {
         return {
@@ -99,6 +104,9 @@ const OrderSearchRoutePage = {
             this.totalPrice = '';
             this.startTime = '';
             this.endTime = '';
+        },
+        handleShowClick(index, row) {
+            this.$router.push('/order/show/' + row.orderId);
         },
         handlePageChange() {
             console.log('page changed', val);
