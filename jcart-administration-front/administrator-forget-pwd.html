@@ -11,9 +11,11 @@
 
 <body>
     <div id="app">
-        <el-input v-model="email" placeholder="请输入找回邮箱"></el-input>
-        <br>
-        <el-button type="primary" @click="handleFindBackPwdClick">找回密码</el-button>
+        <div v-loading="loading">
+            <el-input v-model="email" placeholder="请输入找回邮箱"></el-input>
+            <br>
+            <el-button type="primary" @click="handleFindBackPwdClick">找回密码</el-button>
+        </div>
     </div>
 
     <script src="assets/js/axios.min.js"></script>
