@@ -14,7 +14,10 @@
         <div v-loading="loading">
             <el-input v-model="email" placeholder="请输入找回邮箱"></el-input>
             <br>
-            <el-button type="primary" @click="handleFindBackPwdClick">找回密码</el-button>
+            <el-button type="primary" @click="handleFindBackPwdClick" :disabled="!buttonEnabled">找回密码</el-button>
+            <div v-show="!buttonEnabled">
+                {{counter}}秒
+            </div>
         </div>
     </div>
 
