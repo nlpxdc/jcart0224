@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.cjf.jcartstoreback.dao.ProductOperationMapper">
+  <resultMap id="BaseResultMap" type="io.cjf.jcartstoreback.po.ProductOperation">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="all_count" jdbcType="INTEGER" property="allCount" />
+    <result column="day_count" jdbcType="INTEGER" property="dayCount" />
+    <result column="recent_time" jdbcType="TIMESTAMP" property="recentTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, all_count, day_count, recent_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jcart_product_operation
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jcart_product_operation
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="io.cjf.jcartstoreback.po.ProductOperation">
+    insert into jcart_product_operation (product_id, all_count, day_count, 
+      recent_time)
+    values (#{productId,jdbcType=INTEGER}, #{allCount,jdbcType=INTEGER}, #{dayCount,jdbcType=INTEGER}, 
+      #{recentTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="io.cjf.jcartstoreback.po.ProductOperation">
+    insert into jcart_product_operation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="allCount != null">
+        all_count,
+      </if>
+      <if test="dayCount != null">
+        day_count,
+      </if>
+      <if test="recentTime != null">
+        recent_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="allCount != null">
+        #{allCount,jdbcType=INTEGER},
+      </if>
+      <if test="dayCount != null">
+        #{dayCount,jdbcType=INTEGER},
+      </if>
+      <if test="recentTime != null">
+        #{recentTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartstoreback.po.ProductOperation">
+    update jcart_product_operation
+    <set>
+      <if test="allCount != null">
+        all_count = #{allCount,jdbcType=INTEGER},
+      </if>
+      <if test="dayCount != null">
+        day_count = #{dayCount,jdbcType=INTEGER},
+      </if>
+      <if test="recentTime != null">
+        recent_time = #{recentTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartstoreback.po.ProductOperation">
+    update jcart_product_operation
+    set all_count = #{allCount,jdbcType=INTEGER},
+      day_count = #{dayCount,jdbcType=INTEGER},
+      recent_time = #{recentTime,jdbcType=TIMESTAMP}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+</mapper>
