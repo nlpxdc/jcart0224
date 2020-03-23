@@ -3,6 +3,7 @@ package io.cjf.jcartstoreback.dao;
 import com.github.pagehelper.Page;
 import io.cjf.jcartstoreback.dto.out.ProductListOutDTO;
 import io.cjf.jcartstoreback.po.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public interface ProductMapper {
 
 //    custom
 
-    Page<ProductListOutDTO> search();
+    Page<ProductListOutDTO> search(@Param("keyword") String keyword,
+                                   @Param("status") Byte status);
 
 }

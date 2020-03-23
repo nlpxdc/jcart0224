@@ -176,6 +176,13 @@
     select
     <include refid="Base_Column_List" />
     from jcart_product
-    where status = 1
+    <where>
+      <if test="status != null">
+        status = #{status}
+      </if>
+      <if test="keyword != null and keyword != ''">
+        and (product_name like CONCAT('%','${keyword}','%' ) or product_abstract like CONCAT('%','${keyword}','%' ))
+      </if>
+    </where>
   </select>
 </mapper>
