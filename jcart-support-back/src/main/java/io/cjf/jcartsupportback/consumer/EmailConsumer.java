@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@RocketMQMessageListener(topic = "SendPwdResetByEmail", consumerGroup = "jcart-support-group01")
+//@RocketMQMessageListener(topic = "SendPwdResetByEmail", consumerGroup = "jcart-support-group01")
 public class EmailConsumer implements RocketMQListener<EmailEvent> {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());

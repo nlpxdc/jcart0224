@@ -4,7 +4,16 @@ var app = new Vue({
         email: '',
         loading: false,
         buttonEnabled: true,
-        counter: 60
+        counter: 0
+    },
+    mounted() {
+        setInterval(function () {
+            console.log('count down');
+            app.counter--;
+            if (app.counter < 0) {
+                app.buttonEnabled = true;
+            }
+        }, 1000);
     },
     methods: {
         handleFindBackPwdClick() {
@@ -12,15 +21,6 @@ var app = new Vue({
             this.loading = true;
             this.buttonEnabled = false;
             this.counter = 60;
-
-            setInterval(function () {
-                console.log('count down');
-                app.counter--;
-                if (app.counter < 0) {
-                    app.buttonEnabled = true;
-                }
-            }, 1000);
-
             this.getPwdResetCode();
         },
         getPwdResetCode() {
