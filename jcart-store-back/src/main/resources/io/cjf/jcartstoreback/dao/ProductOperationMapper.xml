@@ -79,4 +79,12 @@
       recent_time = #{recentTime,jdbcType=TIMESTAMP}
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
+
+<!--  custom-->
+  <select id="selectHotProduct" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_product_operation
+    order by day_count desc limit 10
+  </select>
 </mapper>

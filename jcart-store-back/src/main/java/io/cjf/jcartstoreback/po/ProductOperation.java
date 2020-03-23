@@ -1,8 +1,9 @@
 package io.cjf.jcartstoreback.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductOperation {
+public class ProductOperation implements Serializable {
     private Integer productId;
 
     private Integer allCount;

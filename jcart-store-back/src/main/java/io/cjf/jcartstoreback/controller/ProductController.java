@@ -11,6 +11,8 @@ import io.cjf.jcartstoreback.po.ProductOperation;
 import io.cjf.jcartstoreback.service.ProductOperationService;
 import io.cjf.jcartstoreback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +31,9 @@ public class ProductController {
 
     @Autowired
     private KafkaTemplate kafkaTemplate;
+
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
@@ -56,8 +61,18 @@ public class ProductController {
     }
 
     @GetMapping("/hot")
-    public List<ProductListOutDTO> hot(){
-        return null;
+//    @Cacheable(cacheNames = "HotProducts")
+    public List<ProductOperation> hot(){
+
+        String hotProductsJson = redisTemplate.opsForValue().get("HotProducts");
+        if (hotProductsJson != null){
+            List<ProductOperation> productOperations = JSON.parseArray(hotProductsJson, ProductOperation.class);
+            return productOperations;
+        }else {
+            List<ProductOperation> hotProducts = productOperationService.selectHotProduct();
+            redisTemplate.opsForValue().set("HotProducts", JSON.toJSONString(hotProducts));
+            return hotProducts;
+        }
     }
 
 }
