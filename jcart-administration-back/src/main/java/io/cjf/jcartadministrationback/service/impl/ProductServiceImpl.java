@@ -10,6 +10,8 @@ import io.cjf.jcartadministrationback.dto.in.ProductSearchInDTO;
 import io.cjf.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductShowOutDTO;
+import io.cjf.jcartadministrationback.es.doc.ProductDoc;
+import io.cjf.jcartadministrationback.es.repo.ProductRepo;
 import io.cjf.jcartadministrationback.po.Product;
 import io.cjf.jcartadministrationback.po.ProductDetail;
 import io.cjf.jcartadministrationback.service.ProductService;
@@ -27,6 +29,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductDetailMapper productDetailMapper;
+
+    @Autowired
+    private ProductRepo productRepo;
 
     @Override
     @Transactional
@@ -52,6 +57,13 @@ public class ProductServiceImpl implements ProductService {
         List<String> otherPicUrls = productCreateInDTO.getOtherPicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.insertSelective(productDetail);
+
+        ProductDoc productDoc = new ProductDoc();
+        productDoc.setProductId(productId);
+        productDoc.setProductCode(productCreateInDTO.getProductCode());
+        productDoc.setProductName(productCreateInDTO.getProductName());
+        productDoc.setProductAbstract(productCreateInDTO.getProductAbstract());
+        ProductDoc save = productRepo.save(productDoc);
 
 
         return productId;

@@ -6,6 +6,8 @@ import io.cjf.jcartstoreback.dto.in.ProductSearchInDTO;
 import io.cjf.jcartstoreback.dto.out.PageOutDTO;
 import io.cjf.jcartstoreback.dto.out.ProductListOutDTO;
 import io.cjf.jcartstoreback.dto.out.ProductShowOutDTO;
+import io.cjf.jcartstoreback.es.doc.ProductDoc;
+import io.cjf.jcartstoreback.es.repo.ProductRepo;
 import io.cjf.jcartstoreback.mq.HotProductDTO;
 import io.cjf.jcartstoreback.po.ProductOperation;
 import io.cjf.jcartstoreback.service.ProductOperationService;
@@ -35,9 +37,18 @@ public class ProductController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
+    @Autowired
+    private ProductRepo productRepo;
+
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum){
+        String keyword = productSearchInDTO.getKeyword();
+        List<ProductDoc> productDocs = productRepo.findByProductNameLikeOrProductAbstractLike(keyword, keyword);
+//        for (ProductDoc productDoc : productDocs) {
+//            productDoc.ge
+//        }
+
         Page<ProductListOutDTO> page = productService.search(productSearchInDTO, pageNum);
         PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal(page.getTotal());
